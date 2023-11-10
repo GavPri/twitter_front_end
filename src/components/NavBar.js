@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const NavBar = () => {
-    const [mobileMenu, setMobileMenu] = useState(false)
+  const [mobileMenu, setMobileMenu] = useState(false);
 
-    const handleMenu = () => {
-        setMobileMenu(!mobileMenu)
-    }
+  const handleMenu = () => {
+    setMobileMenu(!mobileMenu);
+  };
   return (
     <header className="w-full h-24 flex p-4 items-center text-text-color bg-background-color">
       <nav className="w-full flex items-center justify-between">
@@ -17,8 +17,12 @@ const NavBar = () => {
           <li className="px-4">Sign Up</li>
         </ul>
       </nav>
-      <div>
-        <AiOutlineMenu size={20} />
+      <div onClick={handleMenu}>
+        {!mobileMenu ? (
+          <AiOutlineClose size={20} />
+        ) : (
+          <AiOutlineMenu size={20} />
+        )}
       </div>
       <nav className="mt-24 fixed right-0 top-0 w-[60%] h-full border-r-accent-color bg-tweet-container-background">
         <ul className="uppercase">
