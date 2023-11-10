@@ -1,4 +1,5 @@
 import React from "react";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const NavBar = () => {
   return (
@@ -6,6 +7,16 @@ const NavBar = () => {
       <nav className="w-full flex items-center justify-between">
         <h1>Twitter Clone</h1>
         <ul className="flex">
+          <li className="px-4">Home</li>
+          <li className="px-4">Sign In</li>
+          <li className="px-4">Sign Up</li>
+        </ul>
+      </nav>
+      <div>
+        <AiOutlineMenu size={20} />
+      </div>
+      <nav>
+        <ul>
           <li className="px-4">Home</li>
           <li className="px-4">Sign In</li>
           <li className="px-4">Sign Up</li>
