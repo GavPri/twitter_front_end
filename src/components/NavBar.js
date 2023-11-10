@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const NavBar = () => {
+    const [mobileMenu, setMobileMenu] = useState(false)
+
+    const handleMenu = () => {
+        setMobileMenu(!mobileMenu)
+    }
   return (
     <header className="w-full h-24 flex p-4 items-center text-text-color bg-background-color">
       <nav className="w-full flex items-center justify-between">
