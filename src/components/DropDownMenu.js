@@ -10,7 +10,7 @@ import {
 } from "react-icons/ai";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 
-const MobileMenu = ({ handleMenu, mobileMenu }) => {
+const MobileMenu = ({ handleMenu, mobileMenu, handleSignOut }) => {
   const currentUser = useCurrentUser();
   // logged in links
   const createTweetLink = (
@@ -35,7 +35,10 @@ const MobileMenu = ({ handleMenu, mobileMenu }) => {
         </li>
       </NavLink>
       <NavLink to="/">
-        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-center items-center">
+        <li
+          onClick={handleSignOut}
+          className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-center items-center"
+        >
           <AiOutlineLogout size={15} /> <div className="ml-2">Sign Out</div>
         </li>
       </NavLink>

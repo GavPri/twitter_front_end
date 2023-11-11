@@ -118,6 +118,7 @@ const NavBar = () => {
           loggedInLinks={loggedInLinks}
           loggedOutLinks={loggedOutLinks}
           createTweetLink={createTweetLink}
+          handleSignOut={handleSignOut}
         />
       </div>
     </header>
