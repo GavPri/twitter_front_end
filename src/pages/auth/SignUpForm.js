@@ -57,13 +57,18 @@ const SignUpForm = () => {
               name="username"
               value={username}
               onChange={handleChange}
-              required
+              // required
               placeholder="Username"
               className="w-full border border-tweet-border-color px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-accent-color-300 focus:ring
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
+            {errors.username?.map((message, id) => (
+              <div className="w-full h-8 flex justify-center items-center text-rose mb-6 border border-warning px-3 py-2 rounded rounded-md">
+                <p className="text-md font-bold text-warning">{message}</p>
+              </div>
+            ))}
             <label htmlFor="password1" className="hidden">
-              Username:
+              Password:
             </label>
             <input
               type="password"
@@ -71,18 +76,18 @@ const SignUpForm = () => {
               name="password1"
               value={password1}
               onChange={handleChange}
-              required
+              // required
               placeholder="Enter password"
               className="w-full border border-tweet-border-color px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-accent-color-300 focus:ring
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
-            {errors.username?.map((message, idx) => (
-              <p className="text-red-500" key={idx}>
-                {message}
-              </p>
+            {errors.password1?.map((message, id) => (
+              <div className="w-full h-8 flex justify-center items-center text-rose mb-6 border border-warning px-3 py-2 rounded rounded-md">
+                <p className="text-md font-bold text-warning">{message}</p>
+              </div>
             ))}
             <label htmlFor="password2" className="hidden">
-              Username:
+              Confirm password:
             </label>
             <input
               type="password"
@@ -90,11 +95,16 @@ const SignUpForm = () => {
               name="password2"
               value={password2}
               onChange={handleChange}
-              required
+              // required
               placeholder="Confirm Your Password"
               className="w-full border border-tweet-border-color px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-accent-color-300 focus:ring
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
+            {errors.password2?.map((message, id) => (
+              <div className="w-full h-8 flex justify-center items-center text-rose mb-6 border border-warning px-3 py-2 rounded rounded-md">
+                <p className="text-md font-bold text-warning">{message}</p>
+              </div>
+            ))}
             <button
               type="submit"
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2"

@@ -13,6 +13,7 @@ module.exports = {
       "tweet-border-color": "#253341",
       "profile-background'": "#1c2938",
       "profile-text-color": "#aab8c2",
+      'warning' : '#e11d48'
     },
     extend: {},
   },
