@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import DropDownMenu from "./DropDownMenu";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -9,19 +10,27 @@ const NavBar = () => {
     setMobileMenu(!mobileMenu);
   };
   return (
-    <header className="w-full h-24 flex p-4 items-center text-text-color bg-background-color">
+    <header className="fixed top-0 left-0 w-full h-12 flex p-4 items-center text-text-color bg-background-color">
       <nav className="w-full flex items-center justify-between">
-        <h1>Twitter Clone</h1>
+        <NavLink to="/">
+          <h1>Twitter Clone</h1>
+        </NavLink>
         <ul className="hidden md:flex">
-          <li className="px-4 hover:text-link-color hover:cursor-pointer">
-            Home
-          </li>
-          <li className="px-4 hover:text-link-color hover:cursor-pointer">
-            Sign In
-          </li>
-          <li className="px-4 hover:text-link-color hover:cursor-pointer">
-            Sign Up
-          </li>
+          <NavLink exact to="/" activeClassName="text-accent-color">
+            <li className="px-4 hover:text-link-color hover:cursor-pointer">
+              Home
+            </li>
+          </NavLink>
+          <NavLink to="/signin" activeClassName="text-accent-color">
+            <li className="px-4 hover:text-link-color hover:cursor-pointer">
+              Sign In
+            </li>
+          </NavLink>
+          <NavLink to="/signup" activeClassName="text-accent-color">
+            <li className="px-4 hover:text-link-color hover:cursor-pointer">
+              Sign Up
+            </li>
+          </NavLink>
         </ul>
       </nav>
       <div
