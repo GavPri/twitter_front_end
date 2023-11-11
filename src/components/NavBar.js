@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import DropDownMenu from "./DropDownMenu";
 import { NavLink } from "react-router-dom";
+import { CurrentUserContext } from "../App";
 
 const NavBar = () => {
+  // User Context
+  const current = useContext(CurrentUserContext);
+  const loggedOutLinks = (
+    <>
+      <NavLink to="/signin" activeClassName="text-accent-color">
+        <li className="px-4 hover:text-link-color hover:cursor-pointer">
+          Sign In
+        </li>
+      </NavLink>
+      <NavLink to="/signup" activeClassName="text-accent-color">
+        <li className="px-4 hover:text-link-color hover:cursor-pointer">
+          Sign Up
+        </li>
+      </NavLink>
+    </>
+  );
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const handleMenu = () => {
@@ -19,16 +36,6 @@ const NavBar = () => {
           <NavLink exact to="/" activeClassName="text-accent-color">
             <li className="px-4 hover:text-link-color hover:cursor-pointer">
               Home
-            </li>
-          </NavLink>
-          <NavLink to="/signin" activeClassName="text-accent-color">
-            <li className="px-4 hover:text-link-color hover:cursor-pointer">
-              Sign In
-            </li>
-          </NavLink>
-          <NavLink to="/signup" activeClassName="text-accent-color">
-            <li className="px-4 hover:text-link-color hover:cursor-pointer">
-              Sign Up
             </li>
           </NavLink>
         </ul>
