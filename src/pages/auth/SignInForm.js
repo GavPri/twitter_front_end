@@ -82,7 +82,7 @@ const SignInForm = () => {
               type="submit"
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2"
             >
-              Sign Up
+              Sign In
             </button>
             {errors.non_field_errors?.map((message, idx) => (
               <div className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md">
