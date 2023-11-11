@@ -63,7 +63,7 @@ const SignUpForm = () => {
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
             {errors.username?.map((message, id) => (
-              <div className="w-full h-8 flex justify-center items-center text-rose mb-6 border border-warning px-3 py-2 rounded rounded-md">
+              <div className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md">
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
             ))}
@@ -82,7 +82,7 @@ const SignUpForm = () => {
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
             {errors.password1?.map((message, id) => (
-              <div className="w-full h-8 flex justify-center items-center text-rose mb-6 border border-warning px-3 py-2 rounded rounded-md">
+              <div className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md">
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
             ))}
@@ -101,7 +101,7 @@ const SignUpForm = () => {
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
             {errors.password2?.map((message, id) => (
-              <div className="w-full h-8 flex justify-center items-center text-rose mb-6 border border-warning px-3 py-2 rounded rounded-md">
+              <div className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md">
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
             ))}
