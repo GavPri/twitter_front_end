@@ -46,7 +46,7 @@ const NavBar = () => {
         onClick={handleMenu}
         className="block md:hidden hover:text-link-color hover:cursor-pointer"
       >
-        {!mobileMenu ? (
+        {mobileMenu ? (
           <AiOutlineClose size={20} />
         ) : (
           <AiOutlineMenu size={20} />
