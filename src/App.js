@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
+import SignUpForm from "./pages/auth/SignUpForm";
 
 function App() {
   return (
@@ -18,13 +19,9 @@ function App() {
           <Route
             exact
             path="/signin"
-            render={() => <h1 className="text-text-color">Sign In</h1>}
+            render={() => <h1 className="text-text-color">Sign in</h1>}
           />
-          <Route
-            exact
-            path="/signup"
-            render={() => <h1 className="text-text-color">Sign Up</h1>}
-          />
+          <Route exact path="/signup" render={() => <SignUpForm />} />
         </Switch>
       </div>
     </div>
