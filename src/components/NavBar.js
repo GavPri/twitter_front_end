@@ -6,7 +6,8 @@ import { CurrentUserContext } from "../App";
 
 const NavBar = () => {
   // User Context
-  const current = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
+  const loggedInLinks = <>{currentUser}</>
   const loggedOutLinks = (
     <>
       <NavLink to="/signin" activeClassName="text-accent-color">
