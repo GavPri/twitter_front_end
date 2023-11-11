@@ -39,6 +39,14 @@ const TweetCreate = () => {
           className="file:w-1/3 file:border file:border-tweet-border-color file:px-3 file:py-2 file:rounded-lg file:shadow-sm file:focus:outline-none focus:border-accent-color-300 focus:ring
             file:focus:ring-accent-color-300 file:mb-6 file:text-background-color file:resize-none file:h-10"
         />
+        <div className="flex w-full justify-between ">
+          <button className="w-1/4 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-warning opacity-50 hover:opacity-100 hover:ease-in-out duration-200 hover:scale-125 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2">
+            Cancel
+          </button>
+          <button className="w-1/3 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  hover:scale-125 hover:ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2">
+            Create
+          </button>
+        </div>
         {/* two buttons, cancel, tweet */}
       </form>
     </div>
