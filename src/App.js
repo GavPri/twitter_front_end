@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import { Route, Switch } from "react-router-dom";
+import "./api/axiosDefaults";
 
 function App() {
   return (
