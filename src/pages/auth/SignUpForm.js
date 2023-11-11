@@ -43,7 +43,7 @@ const SignUpForm = () => {
           </NavLink>
         </p>
         <div>
-          <form action="# ">
+          <form onSubmit={handleSubmit}>
             <label htmlFor="username" className="hidden">
               Username:
             </label>
