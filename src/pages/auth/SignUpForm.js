@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -17,6 +18,15 @@ const SignUpForm = () => {
       [event.target.name]: event.target.value,
     });
   };
+  //  Handle form submission
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try{
+      await axios.post('/dj-rest-auth/registration/', signUpData)
+    }catch(err){
+
+    }
+  }
   return (
     <div className="overflow-y-hidden mt-12 mx-auto w-full h-[calc(100vh-24px)] bg-background-color flex justify-center items-center">
       <div className="text-text-color w-[80%] py-6 px-4 border border-tweet-border-color rounded shadow-lg h-[50%] md:w-[50%]">
