@@ -9,12 +9,25 @@ import {
 } from "react-icons/ai";
 import DropDownMenu from "./DropDownMenu";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
-
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
+import axios from "axios";
 
 const NavBar = () => {
   // User Context
   const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
+
+  const handleSignOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const createTweetLink = (
     <>
@@ -38,7 +51,10 @@ const NavBar = () => {
         </li>
       </NavLink>
       <NavLink to="/">
-        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex justify-evenly items-center">
+        <li
+          className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex justify-evenly items-center"
+          onClick={handleSignOut}
+        >
           <AiOutlineLogout size={15} /> <div className="ml-2">Sign Out</div>
         </li>
       </NavLink>
