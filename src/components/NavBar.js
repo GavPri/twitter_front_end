@@ -7,7 +7,7 @@ import { CurrentUserContext } from "../App";
 const NavBar = () => {
   // User Context
   const currentUser = useContext(CurrentUserContext);
-  const loggedInLinks = <>{currentUser}</>
+  const loggedInLinks = <>{currentUser?.username}</>;
   const loggedOutLinks = (
     <>
       <NavLink to="/signin" activeClassName="text-accent-color">
@@ -39,6 +39,7 @@ const NavBar = () => {
               Home
             </li>
           </NavLink>
+          {currentUser ? loggedInLinks : loggedOutLinks}
         </ul>
       </nav>
       <div
