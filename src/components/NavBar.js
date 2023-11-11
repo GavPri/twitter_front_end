@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import DropDownMenu from "./DropDownMenu";
 import { NavLink } from "react-router-dom";
-import { CurrentUserContext } from "../App";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
   // User Context
-  const currentUser = useContext(CurrentUserContext);
+  const currentUser = useCurrentUser();
   const loggedInLinks = <>{currentUser?.username}</>;
   const loggedOutLinks = (
     <>
@@ -53,7 +53,13 @@ const NavBar = () => {
         )}
       </div>
       <div>
-        <DropDownMenu handleMenu={handleMenu} mobileMenu={mobileMenu} />
+        <DropDownMenu
+          handleMenu={handleMenu}
+          mobileMenu={mobileMenu}
+          currentUser={currentUser}
+          loggedInLinks={loggedInLinks}
+          loggedOutLinks={loggedOutLinks}
+        />
       </div>
     </header>
   );

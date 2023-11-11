@@ -6,9 +6,6 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 
-export const CurrentUserContext = createContext();
-export const SetCurrentUserContext = createContext();
-
 function App() {
   return (
     <div className="App">

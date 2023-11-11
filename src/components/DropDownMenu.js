@@ -1,7 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const MobileMenu = ({ handleMenu, mobileMenu }) => {
+const MobileMenu = ({ handleMenu, mobileMenu, currentUser }) => {
+  // logged in links
+  const loggedInLinks = <>{currentUser?.username}</>;
+  const loggedOutLinks = (
+    <>
+      <NavLink to="/signin" activeClassName="text-accent-color">
+        <li className="p-4 border-b border-tweet-border-color  hover:text-link-color hover:cursor-pointer">
+          Sign In
+        </li>
+      </NavLink>
+      <NavLink to="/signup" activeClassName="text-accent-color">
+        <li className="p-4 hover:text-link-color">Sign Up</li>
+      </NavLink>
+    </>
+  );
   return (
     <nav
       onClick={handleMenu}
@@ -17,14 +31,7 @@ const MobileMenu = ({ handleMenu, mobileMenu }) => {
             Home
           </li>
         </NavLink>
-        <NavLink to="/signin" activeClassName="text-accent-color">
-          <li className="p-4 border-b border-tweet-border-color  hover:text-link-color hover:cursor-pointer">
-            Sign In
-          </li>
-        </NavLink>
-        <NavLink to="/signup" activeClassName="text-accent-color">
-          <li className="p-4 hover:text-link-color">Sign Up</li>
-        </NavLink>
+        {currentUser ? loggedInLinks : loggedOutLinks}
       </ul>
     </nav>
   );
