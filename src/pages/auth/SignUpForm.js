@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const SignUpForm = () => {
   // Form functionality
@@ -11,6 +11,8 @@ const SignUpForm = () => {
   });
   // Destructure the signup data
   const { username, password1, password2 } = signUpData;
+  // History hook for redirection 
+  const history = useHistory()
   // Handle change function for form inputs
   const handleChange = (event) => {
     setSignUpData({
