@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { axiosRes } from "../api/axiosDefaults";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -9,18 +9,17 @@ export const SetCurrentUserContext = createContext();
 // custom hooks
 export const useCurrentUser = () => useContext(CurrentUserContext);
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
-// history variable for redirection
-const history = useHistory();
-
 export const CurrentUserProvider = ({ children }) => {
   // get currently logged in user
   const [currentUser, setCurrentUser] = useState(null);
+  // history variable for redirection
+  const history = useHistory();
 
   const [errors, setErrors] = useState({});
 
   const handleMount = async () => {
     try {
-      const { data } = await axios.get("dj-rest-auth/user/");
+      const { data } = await axiosRes.get("dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (err) {
       setErrors(err.response?.data);
