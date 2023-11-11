@@ -13,12 +13,21 @@ const NavBar = () => {
       <nav className="w-full flex items-center justify-between">
         <h1>Twitter Clone</h1>
         <ul className="hidden md:flex">
-          <li className="px-4">Home</li>
-          <li className="px-4">Sign In</li>
-          <li className="px-4">Sign Up</li>
+          <li className="px-4 hover:text-link-color hover:cursor-pointer">
+            Home
+          </li>
+          <li className="px-4 hover:text-link-color hover:cursor-pointer">
+            Sign In
+          </li>
+          <li className="px-4 hover:text-link-color hover:cursor-pointer">
+            Sign Up
+          </li>
         </ul>
       </nav>
-      <div onClick={handleMenu} className="block md:hidden">
+      <div
+        onClick={handleMenu}
+        className="block md:hidden hover:text-link-color hover:cursor-pointer"
+      >
         {!mobileMenu ? (
           <AiOutlineClose size={20} />
         ) : (

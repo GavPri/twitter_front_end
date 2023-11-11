@@ -11,9 +11,13 @@ const MobileMenu = ({ handleMenu, mobileMenu }) => {
       }
     >
       <ul className="uppercase">
-        <li className="p-4 border-b border-tweet-border-color">Home</li>
-        <li className="p-4 border-b border-tweet-border-color">Sign In</li>
-        <li className="p-4">Sign Up</li>
+        <li className="p-4 border-b border-tweet-border-color hover:text-link-color hover:cursor-pointer">
+          Home
+        </li>
+        <li className="p-4 border-b border-tweet-border-color  hover:text-link-color hover:cursor-pointer">
+          Sign In
+        </li>
+        <li className="p-4 hover:text-link-color">Sign Up</li>
       </ul>
     </nav>
   );
