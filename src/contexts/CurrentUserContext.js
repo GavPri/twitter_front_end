@@ -1,12 +1,16 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import { axiosRes } from "../api/axiosDefaults";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 
 // custom hooks
-export const useCurrentUser = () => useContext(CurrentUserContext)
+export const useCurrentUser = () => useContext(CurrentUserContext);
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
+// history variable for redirection
+const history = useHistory();
 
 export const CurrentUserProvider = ({ children }) => {
   // get currently logged in user
@@ -26,6 +30,30 @@ export const CurrentUserProvider = ({ children }) => {
   useEffect(() => {
     handleMount();
   }, []);
+  // Use memo hook for axios instances
+  useMemo(() => {
+    axiosRes.interceptors.response.use(
+      (response) => response,
+      async (err) => {
+        if (err.response?.status === 401) {
+          // If error is 401, make request to refresh token.
+          try {
+            await axios.post("/dj-rest-auth/token/refresh/");
+          } catch (err) {
+            // redirect them to the home page
+            setCurrentUser((prevCurrentUser) => {
+              if (prevCurrentUser) {
+                history.push("/signin");
+              }
+              return null;
+            });
+          }
+          return axios(err.config);
+        }
+        return Promise.reject(err);
+      }
+    );
+  });
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
