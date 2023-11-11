@@ -4,7 +4,7 @@ const TweetCreate = () => {
   return (
     <div className="w-full h-[90%] flex justify-center items-center">
       {/* text area  */}
-      <form className="bg-profile-background w-[80%] md:w-[50%]">
+      <form className="bg-profile-background w-[80%] md:w-[50%] flex justify-start items-start flex-col">
         <label
           htmlFor="tweetcreate"
           className="text-3xl text-text-color mb-6 justify-start block "
@@ -36,8 +36,8 @@ const TweetCreate = () => {
           //   value={tweetcreate}
           //   onChange={handleChange}
           // required
-          className="file:w-full file:border file:border-tweet-border-color file:px-3 file:py-2 file:rounded-lg file:shadow-sm file:focus:outline-none focus:border-accent-color-300 focus:ring
-            file:focus:ring-accent-color-300 file:mb-6 file:text-background-color file:resize-none file:h-40"
+          className="file:w-1/3 file:border file:border-tweet-border-color file:px-3 file:py-2 file:rounded-lg file:shadow-sm file:focus:outline-none focus:border-accent-color-300 focus:ring
+            file:focus:ring-accent-color-300 file:mb-6 file:text-background-color file:resize-none file:h-10"
         />
         {/* two buttons, cancel, tweet */}
       </form>
