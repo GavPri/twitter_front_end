@@ -1,18 +1,68 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import {
+  AiOutlineMenu,
+  AiOutlineClose,
+  AiFillPlusCircle,
+  AiOutlineHeart,
+  AiOutlineRead,
+  AiOutlineLogout,
+} from "react-icons/ai";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
-const MobileMenu = ({ handleMenu, mobileMenu, currentUser }) => {
+const MobileMenu = ({ handleMenu, mobileMenu }) => {
+  const currentUser = useCurrentUser();
   // logged in links
-  const loggedInLinks = <>{currentUser?.username}</>;
+  const createTweetLink = (
+    <>
+      <NavLink to="/tweets/create" activeClassName="text-accent-color">
+        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex justify-center items-center">
+          <AiFillPlusCircle size={15} /> <div className="ml-2">Tweet</div>
+        </li>
+      </NavLink>
+    </>
+  );
+  const loggedInLinks = (
+    <>
+      <NavLink to="/liked" activeClassName="text-accent-color">
+        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex  mb-6 justify-center items-center">
+          <AiOutlineHeart size={15} /> <div className="ml-2">Liked</div>
+        </li>
+      </NavLink>
+      <NavLink to="/feed" activeClassName="text-accent-color">
+        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-center items-center">
+          <AiOutlineRead size={15} /> <div className="ml-2">Feed</div>
+        </li>
+      </NavLink>
+      <NavLink to="/">
+        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-center items-center">
+          <AiOutlineLogout size={15} /> <div className="ml-2">Sign Out</div>
+        </li>
+      </NavLink>
+      <NavLink to={"/accounts/${currentUser?.account_id}"}>
+        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-center items-center">
+          <img src={currentUser?.account_image} alt="avatar" />
+        </li>
+      </NavLink>
+      {createTweetLink}
+    </>
+  );
   const loggedOutLinks = (
     <>
-      <NavLink to="/signin" activeClassName="text-accent-color">
-        <li className="p-4 border-b border-tweet-border-color  hover:text-link-color hover:cursor-pointer">
-          Sign In
+      <NavLink exact to="/" activeClassName="text-accent-color">
+        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-center items-center">
+          <div className="ml-2">Home</div>
         </li>
       </NavLink>
       <NavLink to="/signup" activeClassName="text-accent-color">
-        <li className="p-4 hover:text-link-color">Sign Up</li>
+        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-center items-center">
+          <AiOutlineRead size={15} /> <div className="ml-2">Sign Up</div>
+        </li>
+      </NavLink>
+      <NavLink to="/signin">
+        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-center items-center">
+          <AiOutlineLogout size={15} /> <div className="ml-2">Sign In</div>
+        </li>
       </NavLink>
     </>
   );
@@ -25,12 +75,7 @@ const MobileMenu = ({ handleMenu, mobileMenu, currentUser }) => {
           : "mt-12 fixed right-[-100%] top-0 h-full ease-in-out duration-500 w-[60%] block md:hidden"
       }
     >
-      <ul className="uppercase">
-        <NavLink exact to="/" activeClassName="text-accent-color">
-          <li className="p-4 border-b border-tweet-border-color hover:text-link-color hover:cursor-pointer">
-            Home
-          </li>
-        </NavLink>
+      <ul className="uppercase mt-12">
         {currentUser ? loggedInLinks : loggedOutLinks}
       </ul>
     </nav>
