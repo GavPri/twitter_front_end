@@ -1,14 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const SignInForm = () => {
   // Form functionality
   const [signInData, setSignInData] = useState({
     username: "",
-    password1: "",
+    password: "",
   });
   // Destructure the signup data
-  const { username, password1 } = signInData;
+  const { username, password } = signInData;
   //  History for redirection
   const history = useHistory();
   // Handle change function for form inputs
@@ -25,14 +26,14 @@ const SignInForm = () => {
     event.preventDefault();
     try {
       console.log("clicked");
-      await axios.post("/dj-rest-auth/login/", signUpData);
+      await axios.post("/dj-rest-auth/login/", signInData);
       history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
     }
   };
   return (
-    <div className="overflow-y-hidden mt-12 mx-auto w-full h-[calc(100vh-24px)] bg-background-color flex justify-center items-center">
+    <div className="overflow-y-hidden mx-auto w-full h-[calc(100vh-24px)] bg-background-color flex justify-center items-center">
       <div className="text-text-color w-[80%] py-6 px-4 border border-tweet-border-color rounded shadow-lg h-[50%] md:w-[50%]">
         <h2 className="text-2xl pb-2">Sign In!</h2>
         <div>
@@ -56,21 +57,21 @@ const SignInForm = () => {
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
             ))}
-            <label htmlFor="password1" className="hidden">
+            <label htmlFor="password" className="hidden">
               Password:
             </label>
             <input
               type="password"
               id="password"
-              name="password1"
-              value={password1}
+              name="password"
+              value={password}
               onChange={handleChange}
               // required
               placeholder="Enter password"
               className="w-full border border-tweet-border-color px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-accent-color-300 focus:ring
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
-            {errors.password1?.map((message, id) => (
+            {errors.password?.map((message, id) => (
               <div className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md">
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
