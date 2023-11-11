@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const MobileMenu = ({ handleMenu, mobileMenu }) => {
   return (
@@ -11,13 +12,19 @@ const MobileMenu = ({ handleMenu, mobileMenu }) => {
       }
     >
       <ul className="uppercase">
-        <li className="p-4 border-b border-tweet-border-color hover:text-link-color hover:cursor-pointer">
-          Home
-        </li>
-        <li className="p-4 border-b border-tweet-border-color  hover:text-link-color hover:cursor-pointer">
-          Sign In
-        </li>
-        <li className="p-4 hover:text-link-color">Sign Up</li>
+        <NavLink exact to="/" activeClassName="text-accent-color">
+          <li className="p-4 border-b border-tweet-border-color hover:text-link-color hover:cursor-pointer">
+            Home
+          </li>
+        </NavLink>
+        <NavLink to="/signin" activeClassName="text-accent-color">
+          <li className="p-4 border-b border-tweet-border-color  hover:text-link-color hover:cursor-pointer">
+            Sign In
+          </li>
+        </NavLink>
+        <NavLink to="/signup" activeClassName="text-accent-color">
+          <li className="p-4 hover:text-link-color">Sign Up</li>
+        </NavLink>
       </ul>
     </nav>
   );
