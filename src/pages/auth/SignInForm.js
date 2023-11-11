@@ -3,19 +3,18 @@ import React, { useState } from "react";
 
 const SignInForm = () => {
   // Form functionality
-  const [signUpData, setSignUpData] = useState({
+  const [signInData, setSignInData] = useState({
     username: "",
     password1: "",
-    password2: "",
   });
   // Destructure the signup data
-  const { username, password1, password2 } = signUpData;
+  const { username, password1 } = signInData;
   //  History for redirection
   const history = useHistory();
   // Handle change function for form inputs
   const handleChange = (event) => {
-    setSignUpData({
-      ...signUpData,
+    setSignInData({
+      ...signInData,
       [event.target.name]: event.target.value,
     });
   };
@@ -26,8 +25,8 @@ const SignInForm = () => {
     event.preventDefault();
     try {
       console.log("clicked");
-      await axios.post("/dj-rest-auth/login", signUpData);
-      history.push("/signin");
+      await axios.post("/dj-rest-auth/login/", signUpData);
+      history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
     }
