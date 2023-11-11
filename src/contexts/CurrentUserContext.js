@@ -1,42 +1,37 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 
-// custom hooks
 export const useCurrentUser = () => useContext(CurrentUserContext);
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
-export const CurrentUserProvider = ({ children }) => {
-  // get currently logged in user
-  const [currentUser, setCurrentUser] = useState(null);
-  // history variable for redirection
-  const history = useHistory();
 
-  const [errors, setErrors] = useState({});
+export const CurrentUserProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const history = useHistory();
 
   const handleMount = async () => {
     try {
       const { data } = await axiosRes.get("dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (err) {
-      setErrors(err.response?.data);
+      console.log(err);
     }
   };
-  // Use effect to get user on load
+
   useEffect(() => {
     handleMount();
   }, []);
-  // Use memo hook for axios instances
+
   useMemo(() => {
-    // axios request
     axiosReq.interceptors.request.use(
       async (config) => {
         try {
-          await axios.post("/dj-rest-auth/token/refresh");
-        } catch (error) {
+          await axios.post("/dj-rest-auth/token/refresh/");
+        } catch (err) {
           setCurrentUser((prevCurrentUser) => {
             if (prevCurrentUser) {
               history.push("/signin");
@@ -56,11 +51,9 @@ export const CurrentUserProvider = ({ children }) => {
       (response) => response,
       async (err) => {
         if (err.response?.status === 401) {
-          // If error is 401, make request to refresh token.
           try {
-            await axios.post("/dj-rest-auth/token/refresh");
+            await axios.post("/dj-rest-auth/token/refresh/");
           } catch (err) {
-            // redirect them to the home page
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
                 history.push("/signin");
