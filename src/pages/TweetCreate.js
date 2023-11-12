@@ -26,7 +26,7 @@ const TweetCreate = () => {
         <textarea
           type="text"
           id="content"
-          name="tweetcreate"
+          name="content"
           value={content}
           onChange={handleChange}
           placeholder="What's on your mind?"
@@ -43,9 +43,10 @@ const TweetCreate = () => {
         <input
           type="file"
           id="tweetcreatefile"
-          name="tweetcreatefile"
+          name="image"
           value={image}
           onChange={handleChange}
+          accept="image/*"
           className="file:w-1/3 file:border file:border-tweet-border-color file:px-3 file:py-2 file:rounded-lg file:shadow-sm file:focus:outline-none focus:border-accent-color-300 focus:ring
             file:focus:ring-accent-color-300 file:mb-6 file:text-background-color file:resize-none file:h-10 hover:cursor-pointer"
         />
