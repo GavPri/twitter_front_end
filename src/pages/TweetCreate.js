@@ -6,7 +6,13 @@ const TweetCreate = () => {
     image : '',
   });
   const { content, image } = tweetData;
-  
+  // Handle Change 
+  const handleChange = (event) => {
+    setTweetData({
+      ...tweetData,
+      [event.target.name] : event.target.value
+    })
+  }
   return (
     <div className="w-full h-[90%] flex justify-center items-center">
       {/* text area  */}
