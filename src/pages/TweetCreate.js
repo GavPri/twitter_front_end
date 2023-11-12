@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useRef, useState } from "react";
+import { axiosReq } from "../api/axiosDefaults";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const TweetCreate = () => {
   const [tweetData, setTweetData] = useState({
     content: "",
     image: "",
   });
+  const [errors, setErrors] = useState({});
   const { content, image } = tweetData;
   // Handle Change
   const handleChange = (event) => {
@@ -13,6 +17,9 @@ const TweetCreate = () => {
       [event.target.name]: event.target.value,
     });
   };
+
+  const history = useHistory;
+  const imageInput = useRef(null);
 
   // image change
   const handleImageChange = (event) => {
@@ -24,10 +31,30 @@ const TweetCreate = () => {
       });
     }
   };
+  // handle submit
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+
+    formData.append("content", content);
+    formData.append("image", image);
+    try {
+      const { data } = await axiosReq.post("/tweets/", formData);
+      history.push("/feed/${data.id}");
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
+  };
   return (
     <div className="w-full h-[90%] flex justify-center items-center">
       {/* text area  */}
-      <form className="bg-profile-background w-[80%] md:w-[50%] flex justify-start items-start flex-col">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-profile-background w-[80%] md:w-[50%] flex justify-start items-start flex-col"
+      >
         <label
           htmlFor="tweetcreate"
           className="text-3xl text-text-color mb-6 justify-start block "
@@ -49,14 +76,14 @@ const TweetCreate = () => {
           htmlFor="tweetcreatefile"
           className="text-3xl text-text-color mb-6 justify-start block"
         >
-          Upload a Pic
+          Upload Photo
         </label>
         <div className="rounded overflow-hidden h-50 w-50 flex items-start">
           {image ? (
             <figure className="rounded w-full h-full">
               <img src={image} alt="" className="w-24 h-24 object-cover mb-6" />
               <button
-                onClick={handleImageChange}
+                onChange={handleImageChange}
                 className=" bottom-0 left-0 w-full mb-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  focus:outline-none focus:ring-2 focus:ring-offset-2"
               >
                 Remove Photo
@@ -65,6 +92,7 @@ const TweetCreate = () => {
           ) : (
             <div>
               <input
+                ref={imageInput}
                 type="file"
                 id="Upload Photo"
                 name="image"
@@ -82,10 +110,7 @@ const TweetCreate = () => {
           <button className="w-1/4 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-warning opacity-50 hover:opacity-100 hover:ease-in-out duration-200 hover:scale-125 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2">
             Cancel
           </button>
-          <button
-            type="submit"
-            className="w-1/3 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  hover:scale-125 hover:ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
-          >
+          <button className="w-1/3 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  hover:scale-125 hover:ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2">
             Create
           </button>
         </div>
