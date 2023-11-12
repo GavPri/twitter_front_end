@@ -1,9 +1,29 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const TweetPage = () => {
+  //  access url
+  const { id } = useParams();
+  const [post, setPost] = useState({ results: [] });
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const [{ data: post }] = await Promise.all[
+          axiosReq.get("/tweets/${id}")
+        ];
+        setPost({ results: [post] });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleMount();
+  }, [id]);
+
   return (
-    <div>
-      <h1 className="text-3xl text-text-color ">Tweet Page</h1>e
+    <div className="w-full h-full mt-12">
+      <h1 className="text-3xl text-text-color ">Post Title</h1>
     </div>
   );
 };
