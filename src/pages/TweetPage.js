@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Tweet from "./Tweet";
 
 const TweetPage = () => {
   //  access url
@@ -23,7 +24,9 @@ const TweetPage = () => {
 
   return (
     <div className="w-full h-full mt-12">
-      <h1 className="text-3xl text-text-color ">Post Title</h1>
+      <h1 className="text-3xl text-text-color ">
+        <Tweet />
+      </h1>
     </div>
   );
 };
