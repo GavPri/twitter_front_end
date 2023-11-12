@@ -13,6 +13,16 @@ const TweetCreate = () => {
       [event.target.name]: event.target.value,
     });
   };
+
+  // image change
+  const handleImageChange = (event) => {
+    if (event.target.files.length) {
+      setTweetData({
+        ...tweetData,
+        image: URL.createObjectURL(event.target.files[0]),
+      });
+    }
+  };
   return (
     <div className="w-full h-[90%] flex justify-center items-center">
       {/* text area  */}
