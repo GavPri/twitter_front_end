@@ -2,17 +2,17 @@ import React, { useState } from "react";
 
 const TweetCreate = () => {
   const [tweetData, setTweetData] = useState({
-    content : '',
-    image : '',
+    content: "",
+    image: "",
   });
   const { content, image } = tweetData;
-  // Handle Change 
+  // Handle Change
   const handleChange = (event) => {
     setTweetData({
       ...tweetData,
-      [event.target.name] : event.target.value
-    })
-  }
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <div className="w-full h-[90%] flex justify-center items-center">
       {/* text area  */}
@@ -25,11 +25,10 @@ const TweetCreate = () => {
         </label>
         <textarea
           type="text"
-          //   id="username"
+          id="content"
           name="tweetcreate"
-          //   value={tweetcreate}
-          //   onChange={handleChange}
-          // required
+          value={content}
+          onChange={handleChange}
           placeholder="What's on your mind?"
           className="w-full border border-tweet-border-color px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-accent-color-300 focus:ring
             focus:ring-accent-color-300 mb-6 text-background-color resize-none h-40"
@@ -43,11 +42,10 @@ const TweetCreate = () => {
         </label>
         <input
           type="file"
-          //   id="username"
+          id="tweetcreatefile"
           name="tweetcreatefile"
-          //   value={tweetcreate}
-          //   onChange={handleChange}
-          // required
+          value={image}
+          onChange={handleChange}
           className="file:w-1/3 file:border file:border-tweet-border-color file:px-3 file:py-2 file:rounded-lg file:shadow-sm file:focus:outline-none focus:border-accent-color-300 focus:ring
             file:focus:ring-accent-color-300 file:mb-6 file:text-background-color file:resize-none file:h-10 hover:cursor-pointer"
         />
@@ -55,7 +53,10 @@ const TweetCreate = () => {
           <button className="w-1/4 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-warning opacity-50 hover:opacity-100 hover:ease-in-out duration-200 hover:scale-125 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2">
             Cancel
           </button>
-          <button className="w-1/3 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  hover:scale-125 hover:ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2">
+          <button
+            type="submit"
+            className="w-1/3 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  hover:scale-125 hover:ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
+          >
             Create
           </button>
         </div>
