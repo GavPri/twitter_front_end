@@ -6,15 +6,15 @@ import Tweet from "./Tweet";
 const TweetPage = () => {
   //  access url
   const { id } = useParams();
-  const [post, setPost] = useState({ results: [] });
+  const [tweet, setTweet] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: post }] = await Promise.all[
+        const [{ data: tweer }] = await Promise.all[
           axiosReq.get("/tweets/${id}")
         ];
-        setPost({ results: [post] });
+        setPost({ results: [tweet] });
       } catch (err) {
         console.log(err);
       }
@@ -25,7 +25,7 @@ const TweetPage = () => {
   return (
     <div className="w-full h-full mt-12">
       <h1 className="text-3xl text-text-color ">
-        <Tweet />
+        <Tweet {...Tweet.results[0]} setTweets={setTweets}/>
       </h1>
     </div>
   );
