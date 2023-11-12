@@ -17,6 +17,7 @@ const TweetCreate = () => {
   // image change
   const handleImageChange = (event) => {
     if (event.target.files.length) {
+      URL.revokeObjectURL(image);
       setTweetData({
         ...tweetData,
         image: URL.createObjectURL(event.target.files[0]),
