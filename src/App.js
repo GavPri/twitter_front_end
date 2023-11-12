@@ -6,6 +6,7 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import TweetCreate from "./pages/TweetCreate";
+import TweetPage from "./pages/TweetPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/tweets/create" render={() => <TweetCreate />} />
+          <Route exact path="/tweets/:id" render={() => <TweetPage />} />
         </Switch>
       </div>
     </div>

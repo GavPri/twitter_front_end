@@ -107,7 +107,7 @@ const TweetCreate = () => {
                 className="file:w-1/3 file:border file:border-tweet-border-color file:px-3 file:py-2 file:rounded-lg file:shadow-sm file:focus:outline-none focus:border-accent-color-300 focus:ring
             file:focus:ring-accent-color-300 file:mb-6 file:text-background-color file:resize-none file:h-10 hover:cursor-pointer"
               />
-              {errors.username?.map((message, id) => (
+              {errors.image?.map((message, id) => (
                 <div className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md">
                   <p className="text-md font-bold text-warning">{message}</p>
                 </div>
