@@ -18,7 +18,7 @@ const TweetCreate = () => {
     });
   };
 
-  const history = useHistory;
+  const history = useHistory();
   const imageInput = useRef(null);
 
   // image change
@@ -107,7 +107,10 @@ const TweetCreate = () => {
         </div>
 
         <div className="flex w-full justify-between ">
-          <button className="w-1/4 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-warning opacity-50 hover:opacity-100 hover:ease-in-out duration-200 hover:scale-125 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2">
+          <button
+            onClick={() => history.goBack()}
+            className="w-1/4 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-warning opacity-50 hover:opacity-100 hover:ease-in-out duration-200 hover:scale-125 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2"
+          >
             Cancel
           </button>
           <button className="w-1/3 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  hover:scale-125 hover:ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2">
