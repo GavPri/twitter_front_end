@@ -51,16 +51,33 @@ const TweetCreate = () => {
         >
           Upload a Pic
         </label>
-        <input
-          type="file"
-          id="tweetcreatefile"
-          name="image"
-          value={image}
-          onChange={handleChange}
-          accept="image/*"
-          className="file:w-1/3 file:border file:border-tweet-border-color file:px-3 file:py-2 file:rounded-lg file:shadow-sm file:focus:outline-none focus:border-accent-color-300 focus:ring
+        <div className="rounded overflow-hidden h-50 w-50 flex items-start">
+          {image ? (
+            <figure className="rounded w-full h-full">
+              <img src={image} alt="" className="w-24 h-24 object-cover mb-6" />
+              <button
+                onClick={handleImageChange}
+                className=" bottom-0 left-0 w-full mb-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  focus:outline-none focus:ring-2 focus:ring-offset-2"
+              >
+                Remove Photo
+              </button>
+            </figure>
+          ) : (
+            <div>
+              <input
+                type="file"
+                id="Upload Photo"
+                name="image"
+                value={image}
+                onChange={handleImageChange}
+                accept="image/*"
+                className="file:w-1/3 file:border file:border-tweet-border-color file:px-3 file:py-2 file:rounded-lg file:shadow-sm file:focus:outline-none focus:border-accent-color-300 focus:ring
             file:focus:ring-accent-color-300 file:mb-6 file:text-background-color file:resize-none file:h-10 hover:cursor-pointer"
-        />
+              />
+            </div>
+          )}
+        </div>
+
         <div className="flex w-full justify-between ">
           <button className="w-1/4 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-warning opacity-50 hover:opacity-100 hover:ease-in-out duration-200 hover:scale-125 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2">
             Cancel
