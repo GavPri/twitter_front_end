@@ -1,8 +1,8 @@
 import React from "react";
-import useCurrentUser from "../contexts/CurrentUserContext";
+import useCurrentUser from "../../contexts/CurrentUserContext";
 import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import { axiosRes } from "../api/axiosDefaults";
+import { axiosRes } from "../../api/axiosDefaults";
 
 const Tweet = (props) => {
   const {

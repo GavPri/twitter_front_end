@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-import { axiosReq } from "../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const TweetCreate = () => {
@@ -88,7 +88,7 @@ const TweetCreate = () => {
             <figure className="rounded w-full h-full">
               <img src={image} alt="" className="w-24 h-24 object-cover mb-6" />
               <button
-                onChange={handleImageChange}
+                onClick={handleImageChange}
                 className=" bottom-0 left-0 w-full mb-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  focus:outline-none focus:ring-2 focus:ring-offset-2"
               >
                 Remove Photo
