@@ -34,6 +34,25 @@ const Tweet = (props) => {
       console.log(err);
     }
   };
+  const handleUnLike = async () => {
+    try {
+      const { data } = await axiosRes.post("/likes/", { tweet: id });
+      setTweet((prevTweet) => ({
+        ...prevTweet,
+        results: prevTweet.results.map((tweet) => {
+          return tweet.id === id
+            ? {
+                ...tweet,
+                likes_count: tweet.likes_count - 1,
+                like_id: null,
+              }
+            : tweet;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   //   Find out if current user owns the page
   const currentUser = useCurrentUser();
@@ -62,7 +81,7 @@ const Tweet = (props) => {
             You Cant Like Your Own Posts! <AiOutlineHeart />{" "}
           </p>
         ) : like_id ? (
-          <span className="text-warning" onClick={() => {}}>
+          <span className="text-warning" onClick={(handleUnLike) => {}}>
             <AiOutlineHeart size={20} />
           </span>
         ) : currentUser ? (
