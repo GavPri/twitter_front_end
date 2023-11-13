@@ -11,7 +11,7 @@ const TweetPage = () => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: tweer }] = await Promise.all[
+        const [{ data: tweet }] = await Promise.all[
           axiosReq.get("/tweets/${id}")
         ];
         setPost({ results: [tweet] });
@@ -25,7 +25,7 @@ const TweetPage = () => {
   return (
     <div className="w-full h-full mt-12">
       <h1 className="text-3xl text-text-color ">
-        <Tweet {...Tweet.results[0]} setTweets={setTweets}/>
+        <Tweet {...tweet.results[0]} setTweet={setTweet} tweetPage />
       </h1>
     </div>
   );
