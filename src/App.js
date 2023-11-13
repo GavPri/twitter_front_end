@@ -7,6 +7,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import TweetCreate from "./pages/TweetCreate";
 import TweetPage from "./pages/TweetPage";
+import PostsPage from "./pages/posts/PostsPage";
 
 function App() {
   return (
@@ -14,11 +15,7 @@ function App() {
       <NavBar />
       <div className="mt-12 bg-background-color h-[calc(100vh-48px)] flex items-center justify-center">
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => <h1 className="text-text-color">HomePage</h1>}
-          />
+          <Route exact path="/" render={() => <PostsPage />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/tweets/create" render={() => <TweetCreate />} />
