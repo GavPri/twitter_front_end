@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Tweet from "./Tweet";
+import { axiosReq } from "../../api/axiosDefaults";
 
 const TweetPage = () => {
   //  access url
@@ -14,7 +15,7 @@ const TweetPage = () => {
         const [{ data: tweet }] = await Promise.all[
           axiosReq.get("/tweets/${id}")
         ];
-        setPost({ results: [tweet] });
+        setTweet({ results: [tweet] });
       } catch (err) {
         console.log(err);
       }

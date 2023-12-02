@@ -5,14 +5,14 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
-import TweetCreate from "./pages/TweetCreate";
-import TweetPage from "./pages/TweetPage";
+import TweetCreate from "./pages/posts/TweetCreate";
+import TweetPage from "./pages/posts/TweetPage";
 import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
   const currentUser = useCurrentUser();
-  const profile_id = currentUser?.account_id || " ";
+  const account_id = currentUser?.account_id || " ";
 
   return (
     <div className="App">

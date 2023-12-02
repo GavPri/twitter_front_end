@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useRef, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -39,8 +38,8 @@ const TweetCreate = () => {
     formData.append("content", content);
     formData.append("image", image);
     try {
-      const { data } = await axiosReq.post("/tweets/", formData);
-      history.push("/feed/${data.id}");
+      const { data } = await axiosReq.post("/tweets", formData);
+      history.push(`/feed/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
