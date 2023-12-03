@@ -10,6 +10,7 @@ const Avatar = ({ src, height, text }) => {
         height={height}
         width={height}
       />
+      
     </span>
   );
 };

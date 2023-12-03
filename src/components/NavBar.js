@@ -14,6 +14,7 @@ import {
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
 import axios from "axios";
+import Avatar from "./Avatar";
 
 const NavBar = () => {
   // User Context
@@ -60,7 +61,7 @@ const NavBar = () => {
       </NavLink>
       <NavLink to={"/accounts/${currentUser?.account_id}"}>
         <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex justify-evenly items-center">
-          <img src={currentUser?.account_image} alt="avatar" />
+          <Avatar src={currentUser?.account_image} text="Profile" height={40} />
         </li>
       </NavLink>
       {createTweetLink}
