@@ -59,7 +59,7 @@ const NavBar = () => {
           <AiOutlineLogout size={15} /> <div className="ml-2">Sign Out</div>
         </li>
       </NavLink>
-      <NavLink to={"/accounts/${currentUser?.account_id}"}>
+      <NavLink to={`/accounts/${currentUser?.account_id}`}>
         {/* <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex justify-evenly items-center"> */}
         <Avatar src={currentUser?.account_image} text="" height={40} />
         {/* </li> */}
