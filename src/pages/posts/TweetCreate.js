@@ -79,7 +79,7 @@ function TweetCreate() {
         {errors?.content?.map((message, idx) => (
           <div
             key={idx}
-            className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md"
+            className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded-md"
           >
             <p className="text-md font-bold text-warning">{message}</p>
           </div>
@@ -123,7 +123,7 @@ function TweetCreate() {
               {errors?.image?.map((message, idx) => (
                 <div
                   key={idx}
-                  className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md"
+                  className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded-md"
                 >
                   <p className="text-md font-bold text-warning">{message}</p>
                 </div>
