@@ -60,9 +60,9 @@ const NavBar = () => {
         </li>
       </NavLink>
       <NavLink to={"/accounts/${currentUser?.account_id}"}>
-        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex justify-evenly items-center">
-          <Avatar src={currentUser?.account_image} text="Profile" height={40} />
-        </li>
+        {/* <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex justify-evenly items-center"> */}
+        <Avatar src={currentUser?.account_image} text="" height={40} />
+        {/* </li> */}
       </NavLink>
       {createTweetLink}
     </>
@@ -87,12 +87,12 @@ const NavBar = () => {
     setMobileMenu(!mobileMenu);
   };
   return (
-    <header className="fixed top-0 left-0 w-full h-12 flex p-4 items-center text-text-color bg-background-color">
+    <header className="fixed top-0 left-0 w-full h-24 flex p-4 items-center text-text-color bg-background-color">
       <nav className="w-full flex items-center justify-between">
         <NavLink to="/">
           <h1>Twitter Clone</h1>
         </NavLink>
-        <ul className="hidden md:flex">
+        <ul className="hidden md:flex items-center">
           <NavLink exact to="/" activeClassName="text-accent-color">
             <li className="px-4 hover:text-link-color hover:cursor-pointer">
               Home
