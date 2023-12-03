@@ -92,7 +92,7 @@ const NavBar = () => {
         <NavLink to="/">
           <h1>Twitter Clone</h1>
         </NavLink>
-        <ul className="hidden md:flex items-center">
+        <ul className="hidden md:flex items-center uppercase">
           <NavLink exact to="/" activeClassName="text-accent-color">
             <li className="px-4 hover:text-link-color hover:cursor-pointer">
               Home
