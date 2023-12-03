@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import { Route, Switch } from "react-router-dom";
@@ -15,7 +14,7 @@ function App() {
   const account_id = currentUser?.account_id || " ";
 
   return (
-    <div className="App">
+    <div className="App ">
       <NavBar />
       <div className="mt-12 bg-background-color h-[calc(100vh-48px)] flex items-center justify-center">
         <Switch>
