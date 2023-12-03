@@ -114,6 +114,7 @@ function TweetCreate() {
                 type="file"
                 id="image-upload"
                 accept="image/*"
+                value={image}
                 onChange={handleChangeImage}
                 ref={imageInput}
                 className="file:w-1/3 file:border file:border-tweet-border-color file:px-3 file:py-2 file:rounded-lg file:shadow-sm file:focus:outline-none focus:border-accent-color-300 focus:ring
