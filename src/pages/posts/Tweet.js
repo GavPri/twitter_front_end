@@ -13,7 +13,7 @@ const Tweet = (props) => {
     updated_at,
     account_id,
     account_image,
-    comments_count,
+    replies_count,
     likes_count,
     like_id,
     content,
@@ -56,7 +56,6 @@ const Tweet = (props) => {
       console.log(err);
     }
   };
-
   //   Find out if current user owns the page
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -116,7 +115,10 @@ const Tweet = (props) => {
             <AiOutlineHeart size={25} />
           </OverlayTrigger>
         )}
-        <div>{likes_count}</div>
+        <div>
+          {likes_count}
+          {/* {replies_count} */}
+        </div>
       </div>
     </Card>
   );
