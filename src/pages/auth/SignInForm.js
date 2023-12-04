@@ -36,7 +36,7 @@ const SignInForm = () => {
   };
   return (
     <div className="overflow-y-hidden mx-auto w-full h-[calc(100vh-24px)] bg-background-color flex justify-center items-center">
-      <div className="text-text-color w-[80%] py-6 px-4 border border-tweet-border-color rounded shadow-lg h-[35%] md:w-[50%]">
+      <div className="text-text-color w-[80%] py-6 px-4 border border-tweet-border-color rounded shadow-lg h-fit md:w-[50%]">
         <h2 className="text-2xl pb-2">Sign In!</h2>
         <div>
           <form onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ const SignInForm = () => {
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
             {errors.username?.map((message, id) => (
-              <div className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md">
+              <div className="w-full h-8 flex justify-center items-center text-rose mb-4 border border-warning px-3 py-2 rounded rounded-md">
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
             ))}
@@ -74,7 +74,7 @@ const SignInForm = () => {
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
             {errors.password?.map((message, id) => (
-              <div className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md">
+              <div className="w-full h-8 flex justify-center items-center text-rose mb-4 border border-warning px-3 py-2 rounded rounded-md">
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
             ))}
@@ -85,7 +85,7 @@ const SignInForm = () => {
               Sign In
             </button>
             {errors.non_field_errors?.map((message, idx) => (
-              <div className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md">
+              <div className="w-full h-8 flex justify-center items-center text-rose mb-4 mt-6 border border-warning px-3 py-2 rounded rounded-md">
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
             ))}
