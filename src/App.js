@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <div className="bg-background-color min-h-screen flex items-center justify-center">
+      <div className="bg-background-color mt-16 min-h-screen flex flex-col items-center justify-start">
         <Switch>
           {/* sign up & sign in */}
           <Route exact path="/signin" render={() => <SignInForm />} />
