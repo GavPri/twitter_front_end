@@ -25,7 +25,7 @@ const TweetPage = () => {
   }, [id]);
 
   return (
-    <div className="w-[50%] h-[full] mt-16">
+    <div className=" w-[80%] md:w-[50%] h-[full] mt-16">
       <Tweet {...tweet.results[0]} setTweet={setTweet} tweetPage />
     </div>
   );
