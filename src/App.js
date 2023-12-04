@@ -6,7 +6,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import TweetCreate from "./pages/posts/TweetCreate";
 import TweetPage from "./pages/posts/TweetPage";
-import PostsPage from "./pages/posts/PostsPage";
+
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
@@ -18,24 +18,6 @@ function App() {
       <NavBar />
       <div className="bg-background-color min-h-screen flex items-center justify-center">
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <PostsPage message="No results found, adjust the search keyword." />
-            )}
-          />
-          {/* feed */}
-          <Route
-            exact
-            path="/feed"
-            render={() => (
-              <PostsPage
-                message="No results found, adjust the search keyword or follow a user."
-                filter={`owner__followed__owner__account=${account_id}&`}
-              />
-            )}
-          />
           {/* sign up & sign in */}
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
