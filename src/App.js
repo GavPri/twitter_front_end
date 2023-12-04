@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App ">
       <NavBar />
-      <div className="mt-12 bg-background-color h-[calc(100vh-48px)] flex items-center justify-center">
+      <div className="mt-8 bg-background-color h-fit flex items-center justify-center">
         <Switch>
           <Route
             exact
