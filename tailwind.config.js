@@ -15,6 +15,7 @@ module.exports = {
       "profile-text-color": "#aab8c2",
       warning: "#e11d48",
       "file-text": "#06B6D4",
+      'nav-background' : '#1e40af'
     },
     extend: {},
   },
