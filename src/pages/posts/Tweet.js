@@ -81,24 +81,32 @@ const Tweet = (props) => {
         {content}
       </Card.Body>
       <Card.Img src={image} alt="content"></Card.Img>
-      <div className="w-full h-fit m-4 bg-accent-color">
+      <div className="w-full h-fit mt-4 p-4 bg-accent-color">
         {/* Check if current user is the owner */}
-        { is_owner ? (
-          <OverlayTrigger placement="top" overlay={<Tooltip>You can't like your own posts!</Tooltip>}>
-            <AiOutlineHeart  size={15}/>
+        {is_owner ? (
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip>You can't like your own posts!</Tooltip>}
+          >
+            <AiOutlineHeart size={25} />
           </OverlayTrigger>
-          
-        ): like_id ? (
-          <span  className='bg-warning text-text-color'onClick={handleUnLike}>
-            <AiOutlineHeart size={15} />
+        ) : like_id ? (
+          <span
+            className="bg-warning text-text-color text-lg"
+            onClick={handleUnLike}
+          >
+            <AiOutlineHeart size={25} />
           </span>
-        ): currentUser ? (
-          <span onClick={handleLike}>
-            <AiOutlineHeart  size={15}/>
+        ) : currentUser ? (
+          <span className="text-lg" onClick={handleLike}>
+            <AiOutlineHeart size={25} />
           </span>
-        ) :(
-          <OverlayTrigger placement="top" overlay={<Tooltip>Log in to like a post</Tooltip>}>
-            <AiOutlineHeart size={15} />
+        ) : (
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip>Log in to like a post</Tooltip>}
+          >
+            <AiOutlineHeart size={25} />
           </OverlayTrigger>
         )}
       </div>
