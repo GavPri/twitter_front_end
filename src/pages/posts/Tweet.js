@@ -1,6 +1,6 @@
 import React from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineComment, AiFillHeart } from "react-icons/ai";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRes } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
@@ -81,24 +81,31 @@ const Tweet = (props) => {
         {content}
       </Card.Body>
       <Card.Img src={image} alt="content"></Card.Img>
-      <div className="w-full h-fit mt-4 p-4 bg-accent-color">
+      <div className="w-full h-fit mt-4 p-4 bg-accent-color flex items-center">
         {/* Check if current user is the owner */}
         {is_owner ? (
           <OverlayTrigger
             placement="top"
-            overlay={<Tooltip>You can't like your own posts!</Tooltip>}
+            overlay={
+              <Tooltip className="bg-link-color text-text-color mb-2 p-4 rounded-md transition-opacity ease-in-out duration-350">
+                You can't like your own posts!
+              </Tooltip>
+            }
           >
-            <AiOutlineHeart size={25} />
+            <AiOutlineHeart size={25} className="mr-2 hover:cursor-pointer" />
           </OverlayTrigger>
         ) : like_id ? (
           <span
-            className="bg-warning text-text-color text-lg"
+            className="text-warning text-lg mr-2 hover:cursor-pointer"
             onClick={handleUnLike}
           >
-            <AiOutlineHeart size={25} />
+            <AiFillHeart size={25} />
           </span>
         ) : currentUser ? (
-          <span className="text-lg" onClick={handleLike}>
+          <span
+            className="text-text-color text-lg mr-2 hover:cursor-pointer"
+            onClick={handleLike}
+          >
             <AiOutlineHeart size={25} />
           </span>
         ) : (
@@ -109,6 +116,7 @@ const Tweet = (props) => {
             <AiOutlineHeart size={25} />
           </OverlayTrigger>
         )}
+        <div>{likes_count}</div>
       </div>
     </Card>
   );
