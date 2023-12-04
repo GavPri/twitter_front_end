@@ -8,6 +8,7 @@ import TweetCreate from "./pages/posts/TweetCreate";
 import TweetPage from "./pages/posts/TweetPage";
 
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import FeedPage from "./pages/posts/FeedPage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -18,6 +19,14 @@ function App() {
       <NavBar />
       <div className="bg-background-color mt-16 min-h-screen flex flex-col items-center justify-start">
         <Switch>
+          {/* Home page/feed */}
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <FeedPage message="No results found, adjust your search!" />
+            )}
+          /> 
           {/* sign up & sign in */}
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
