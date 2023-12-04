@@ -4,7 +4,7 @@ import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRes } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
-import { Card, Media } from "react-bootstrap";
+import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const Tweet = (props) => {
   const {
@@ -62,7 +62,7 @@ const Tweet = (props) => {
   const is_owner = currentUser?.username === owner;
   return (
     // Boot strap card
-    <Card className="flex flex-col items-center justify-between bg-tweet-container-background p-4 rounded-md text-text-color ">
+    <Card className="flex flex-col items-center justify-between bg-tweet-container-background p-4 rounded-md text-text-color mb-16">
       <Card.Body className="w-full h-full border-b-2 border-tweet-border-color pb-2">
         <Media className="flex items-center justify-between w-full ">
           <div className="flex items-center justify-start w-[33%]">
@@ -81,7 +81,27 @@ const Tweet = (props) => {
         {content}
       </Card.Body>
       <Card.Img src={image} alt="content"></Card.Img>
-      <div className="w-full h-fit m-4 bg-accent-color"></div>
+      <div className="w-full h-fit m-4 bg-accent-color">
+        {/* Check if current user is the owner */}
+        { is_owner ? (
+          <OverlayTrigger placement="top" overlay={<Tooltip>You can't like your own posts!</Tooltip>}>
+            <AiOutlineHeart  size={15}/>
+          </OverlayTrigger>
+          
+        ): like_id ? (
+          <span  className='bg-warning text-text-color'onClick={handleUnLike}>
+            <AiOutlineHeart size={15} />
+          </span>
+        ): currentUser ? (
+          <span onClick={handleLike}>
+            <AiOutlineHeart  size={15}/>
+          </span>
+        ) :(
+          <OverlayTrigger placement="top" overlay={<Tooltip>Log in to like a post</Tooltip>}>
+            <AiOutlineHeart size={15} />
+          </OverlayTrigger>
+        )}
+      </div>
     </Card>
   );
 };
