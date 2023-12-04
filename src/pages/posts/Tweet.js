@@ -63,8 +63,8 @@ const Tweet = (props) => {
   console.log(account_image);
   return (
     // Boot strap card
-    <Card className="flex flex-col items-center justify-between bg-tweet-container-background p-4 rounded-md text-text-color">
-      <Card.Body className="w-full h-full">
+    <Card className="flex flex-col items-center justify-between bg-tweet-container-background p-4 rounded-md text-text-color ">
+      <Card.Body className="w-full h-full border-b-2 border-tweet-border-color">
         <Media className="flex items-center justify-between w-full ">
           <NavLink to={`/accounts/${account_id}`}>
             <Avatar src={account_image} height={55} /> {owner}
@@ -75,6 +75,10 @@ const Tweet = (props) => {
           </div>
         </Media>
       </Card.Body>
+      <Card.Body className=" flex items-start w-full h-full py-4">
+        {content}
+      </Card.Body>
+      <Card.Img src={image} alt="content"></Card.Img>
     </Card>
   );
 };
