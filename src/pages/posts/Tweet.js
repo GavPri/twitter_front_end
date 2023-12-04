@@ -81,6 +81,7 @@ const Tweet = (props) => {
         {content}
       </Card.Body>
       <Card.Img src={image} alt="content"></Card.Img>
+      <div className="w-full h-fit m-4 bg-accent-color"></div>
     </Card>
   );
 };
