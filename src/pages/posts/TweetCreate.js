@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Form } from "react-bootstrap";
 
 function TweetCreate() {
   // ---- store errors
@@ -44,6 +45,7 @@ function TweetCreate() {
 
     try {
       const { data } = await axiosReq.post("/tweets/", formData);
+      console.log(data);
       history.push(`/feed/${data.id}`);
     } catch (err) {
       console.log(err);
@@ -54,15 +56,16 @@ function TweetCreate() {
   };
 
   return (
-    <div className="w-full h-fit flex justify-center items-center mt-[80px] mb-12">
+    <div className="w-[80%] md:w-[70%] p-6 rounded-md h-fit flex justify-center items-center mt-[80px] mb-12 bg-tweet-container-background">
       {/* text area  */}
       <form
+        // enctype="multipart/form-data"
         onSubmit={handleSubmit}
-        className="bg-profile-background w-[80%] md:w-[50%] flex justify-start items-start flex-col"
+        className="bg-profile-background w-full p-2 md:w-[50%] flex justify-start items-start flex-col"
       >
         <label
           htmlFor="content"
-          className="text-3xl text-text-color mb-6 justify-start block "
+          className="text-lg text-text-color mb-6 justify-start block "
         >
           Tweet
         </label>
@@ -85,17 +88,21 @@ function TweetCreate() {
           </div>
         ))}
         {/* Image upload */}
-        <label
-          htmlFor="tweet-image"
-          className="text-3xl text-text-color mb-6 justify-start block"
+        <p
+          htmlFor="image-upload"
+          className="text-lg text-text-color mb-6 justify-start block"
         >
           Upload Photo
-        </label>
+        </p>
         <div className="rounded overflow-hidden h-50 w-50 flex items-start">
           {image ? (
             <>
               <figure className="rounded-md w-full h-full">
-                <img src={image} alt="" className=" object-cover mb-6" />
+                <img
+                  src={image}
+                  alt="upload image"
+                  className=" object-cover mb-6"
+                />
                 <button
                   onClick={handleChangeImage}
                   className=" bottom-0 left-0 w-full mb-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  focus:outline-none focus:ring-2 focus:ring-offset-2"
@@ -106,28 +113,49 @@ function TweetCreate() {
             </>
           ) : (
             <>
-              <input
-                type="file"
-                id="image-upload"
-                accept="image/*"
-                value={image}
-                onChange={handleChangeImage}
-                ref={imageInput}
-                className="file:w-1/3 file:border file:border-tweet-border-color file:px-3 file:py-2 file:rounded-lg file:shadow-sm file:focus:outline-none focus:border-accent-color-300 focus:ring
-            file:focus:ring-accent-color-300 file:mb-6 file:text-background-color file:resize-none file:h-10 hover:cursor-pointer"
-              />
-              {errors?.image?.map((message, idx) => (
-                <div
-                  key={idx}
-                  className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded-md"
-                >
-                  <p className="text-md font-bold text-warning">{message}</p>
-                </div>
-              ))}
+              <Form.Label htmlFor="image-upload" className="hidden">
+                Upload An Image
+              </Form.Label>
             </>
           )}
         </div>
-
+        <div className="w-full">
+          {/* <Form.File
+            id="image-upload"
+            accept="image/*"
+            onChange={handleChangeImage}
+            ref={imageInput}
+          /> */}
+          <Form.Group
+            controlId="formFile"
+            className="mb-3 h-12 w-full flex flex-col items-center "
+          >
+            <Form.Label className="text-text-color sr-only">
+              Default file input example
+            </Form.Label>
+            <Form.Control
+              type="file"
+              id="image-upload"
+              accept="image/*"
+              onChange={handleChangeImage}
+              ref={imageInput}
+              className=" block text-sm text-file-text w-full selection:file:mr-4 file:py-2 file:px-4
+              file:border-0
+              file:text-sm file:font-semibold
+              file:rounded-md
+              file:bg-link-color file:text-text-color
+              hover:file:bg-link-color-600 hover:cursor-pointer"
+            />
+          </Form.Group>
+          {errors?.image?.map((message, idx) => (
+            <div
+              key={idx}
+              className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded-md"
+            >
+              <p className="text-md font-bold text-warning">{message}</p>
+            </div>
+          ))}
+        </div>
         <div className="flex w-full justify-between ">
           <button
             onClick={() => history.goBack()}
