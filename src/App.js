@@ -26,7 +26,28 @@ function App() {
             render={() => (
               <FeedPage message="No results found, adjust your search!" />
             )}
-          /> 
+          />
+          <Route
+            exact
+            path="/feed"
+            render={() => (
+              <FeedPage
+                message="No results found, adjust your search or follow a user!"
+                filter={`owner__followed__owner__account=${account_id}&`}
+              />
+            )}
+          />
+          {/* liked post route */}
+          <Route
+            exact
+            path="/liked"
+            render={() => (
+              <FeedPage
+                message="No results found, Adjust the search or like a post!"
+                filter={`likes__owner__account=${account_id}&ordering=-likes__created_at&`}
+              />
+            )}
+          />
           {/* sign up & sign in */}
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
