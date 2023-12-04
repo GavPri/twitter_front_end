@@ -56,12 +56,12 @@ function TweetCreate() {
   };
 
   return (
-    <div className="w-[80%] md:w-[70%] p-6 rounded-md h-fit flex justify-center items-center mt-[80px] mb-12 bg-tweet-container-background">
+    <div className="w-[80%] md:w-[50%] p-6 rounded-md h-fit flex justify-center items-center mt-[80px] mb-12 bg-tweet-container-background">
       {/* text area  */}
       <form
         // enctype="multipart/form-data"
         onSubmit={handleSubmit}
-        className="bg-profile-background w-full p-2 md:w-[50%] flex justify-start items-start flex-col"
+        className="bg-profile-background w-full p-2 md:w-[90%] flex justify-start items-start flex-col"
       >
         <label
           htmlFor="content"
