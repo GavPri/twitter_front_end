@@ -13,7 +13,7 @@ const TweetPage = () => {
     const handleMount = async () => {
       try {
         const [{ data: tweet }] = await Promise.all[
-          axiosReq.get("/tweets/${id}")
+          axiosReq.get(`/tweets/${id}`)
         ];
         setTweet({ results: [tweet] });
       } catch (err) {
