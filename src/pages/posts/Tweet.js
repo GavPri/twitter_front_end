@@ -70,7 +70,7 @@ const Tweet = (props) => {
             </NavLink>
             <span className="block ml-4">{owner}</span>
           </div>
-          <div className="flex items-center justify-center w-[40%]">
+          <div className="flex items-center justify-end w-[40%]">
             <span className="text-sm mr-4">{updated_at}</span>
             {is_owner && tweetPage && "..."}
           </div>
