@@ -16,6 +16,7 @@ const TweetPage = () => {
           axiosReq.get(`/tweets/${id}`),
         ]);
         setTweet({ results: [tweet] });
+        console.log(tweet);
       } catch (err) {
         console.log(err);
       }

@@ -3,7 +3,7 @@ import React from "react";
 const Avatar = ({ src, height, text }) => {
   return (
     <div className="flex">
-      <span className="block items-center">
+      <span>
         <img
           className="object-cover rounded full"
           src={src}

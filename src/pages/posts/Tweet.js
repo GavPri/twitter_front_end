@@ -60,17 +60,19 @@ const Tweet = (props) => {
   //   Find out if current user owns the page
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  console.log(account_image);
   return (
     // Boot strap card
     <Card className="flex flex-col items-center justify-between bg-tweet-container-background p-4 rounded-md text-text-color ">
-      <Card.Body className="w-full h-full border-b-2 border-tweet-border-color">
+      <Card.Body className="w-full h-full border-b-2 border-tweet-border-color pb-2">
         <Media className="flex items-center justify-between w-full ">
-          <NavLink to={`/accounts/${account_id}`}>
-            <Avatar src={account_image} height={55} /> {owner}
-          </NavLink>
-          <div className="flex items-center">
-            <span> last updated {updated_at}</span>
+          <div className="flex items-center justify-start w-[33%]">
+            <NavLink to={`/accounts/${account_id}`}>
+              <Avatar src={account_image} height={40} />
+            </NavLink>
+            <span className="block ml-4">{owner}</span>
+          </div>
+          <div className="flex items-center justify-between w-[33%] ">
+            <span className="text-sm"> last updated {updated_at}</span>
             {is_owner && tweetPage && "..."}
           </div>
         </Media>
