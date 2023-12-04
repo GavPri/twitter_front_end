@@ -25,16 +25,6 @@ function App() {
           <Route exact path="/tweets/create" render={() => <TweetCreate />} />
           <Route exact path="/tweets/:id" render={() => <TweetPage />} />
           {/* Liked  */}
-          <Route
-            exact
-            path="/feed"
-            render={() => (
-              <PostsPage
-                message="No results found, adjust the search keyword or like a post."
-                filter={`likes__owner__account=${account_id}&ordering=-likes__created_at&`}
-              />
-            )}
-          />
         </Switch>
       </div>
     </div>
