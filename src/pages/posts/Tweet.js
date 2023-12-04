@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { AiOutlineHeart, AiOutlineComment, AiFillHeart } from "react-icons/ai";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRes } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -39,10 +39,10 @@ const Tweet = (props) => {
   };
   const handleUnLike = async () => {
     try {
-      const { data } = await axiosRes.post("/likes/", { tweet: id });
-      setTweet((prevTweet) => ({
-        ...prevTweet,
-        results: prevTweet.results.map((tweet) => {
+      await axiosRes.delete(`/likes/${like_id}`);
+      setTweet((prevTweets) => ({
+        ...prevTweets,
+        results: prevTweets.results.map((tweet) => {
           return tweet.id === id
             ? {
                 ...tweet,
@@ -80,7 +80,7 @@ const Tweet = (props) => {
         {content}
       </Card.Body>
       <Card.Img src={image} alt="content"></Card.Img>
-      <div className="w-full h-fit mt-4 p-4 bg-accent-color flex items-center">
+      <div className="w-full h-fit mt-4 p-4 bg-accent-color flex items-center justify-center">
         {/* Check if current user is the owner */}
         {is_owner ? (
           <OverlayTrigger
@@ -115,10 +115,11 @@ const Tweet = (props) => {
             <AiOutlineHeart size={25} />
           </OverlayTrigger>
         )}
-        <div>
-          {likes_count}
-          {/* {replies_count} */}
-        </div>
+        {likes_count}
+        <Link to={`/tweets/${id}`}>
+          <AiOutlineComment size={25} className="ml-4 mr-2" />
+        </Link>
+        {replies_count}
       </div>
     </Card>
   );
