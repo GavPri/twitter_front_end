@@ -126,10 +126,7 @@ function TweetCreate() {
             onChange={handleChangeImage}
             ref={imageInput}
           /> */}
-          <Form.Group
-            controlId="formFile"
-            className="mb-3 h-12 w-full flex flex-col items-center "
-          >
+          <Form.Group className="mb-3 h-12 w-full flex flex-col items-center ">
             <Form.Label className="text-text-color sr-only">
               Default file input example
             </Form.Label>
