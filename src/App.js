@@ -14,9 +14,9 @@ function App() {
   const account_id = currentUser?.account_id || " ";
 
   return (
-    <div className="App ">
+    <div className="App">
       <NavBar />
-      <div className="mt-8 bg-background-color h-fit flex items-center justify-center">
+      <div className="mt-8 bg-background-color min-h-screen flex items-center justify-center">
         <Switch>
           <Route
             exact
