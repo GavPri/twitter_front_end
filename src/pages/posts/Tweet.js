@@ -3,6 +3,8 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRes } from "../../api/axiosDefaults";
+import Avatar from "../../components/Avatar";
+import { Card } from "react-bootstrap";
 
 const Tweet = (props) => {
   const {
@@ -58,48 +60,9 @@ const Tweet = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   return (
-    <div className="w-[80%] bg-tweet-container-background h-[80px] flex justify-center items-center">
-      <div className="w-full h-[10%] flex justify-between items-start">
-        <img
-          src={currentUser?.account_image}
-          alt="avatar"
-          className="h-[80%]"
-        />
-      </div>
-      <span className="text-3xl">...</span>
-      {/* content */}
-      <div className="w-full h-fit">{content}</div>
-      {/* image */}
-      {image ? (
-        <div className="h-[40%] w-full object-contain">
-          <div className="h-full w-full">{image}</div>
-        </div>
-      ) : null}
-      <div className="flex w-full h-10 justify-between p-4">
-        {is_owner ? (
-          <p>
-            You Cant Like Your Own Posts! <AiOutlineHeart />{" "}
-          </p>
-        ) : like_id ? (
-          <span className="text-warning" onClick={(handleUnLike) => {}}>
-            <AiOutlineHeart size={20} />
-          </span>
-        ) : currentUser ? (
-          <span onClick={(handleLike) => {}}>
-            <AiOutlineHeart size={20} />
-          </span>
-        ) : (
-          <p>
-            {" "}
-            Log in to like posts! <AiOutlineHeart size={10} />
-          </p>
-        )}
-        {likes_count}
-        <NavLink to="/posts/${id}">
-          <AiOutlineComment />
-        </NavLink>
-      </div>
-    </div>
+    // Boot strap card
+    <Card className="w-80% h-fit flex flex-col items-center justify-between" />
+      
   );
 };
 
