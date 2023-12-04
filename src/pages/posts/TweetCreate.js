@@ -45,7 +45,6 @@ function TweetCreate() {
 
     try {
       const { data } = await axiosReq.post("/tweets/", formData);
-      console.log(data);
       history.push(`/feed/${data.id}`);
     } catch (err) {
       console.log(err);
