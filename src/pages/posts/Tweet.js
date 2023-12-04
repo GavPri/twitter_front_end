@@ -4,7 +4,7 @@ import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRes } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
-import { Card } from "react-bootstrap";
+import { Card, Media } from "react-bootstrap";
 
 const Tweet = (props) => {
   const {
@@ -61,8 +61,13 @@ const Tweet = (props) => {
   const is_owner = currentUser?.username === owner;
   return (
     // Boot strap card
-    <Card className="w-80% h-fit flex flex-col items-center justify-between" />
-      
+    <Card className="w-full h-full flex flex-col items-center justify-between bg-warning">
+      <Media className="items-center justify-between">
+        <NavLink to={`/accounts/${account_id}`}>
+          <Avatar src={account_image} height={55} /> {owner}
+        </NavLink>
+      </Media>
+    </Card>
   );
 };
 
