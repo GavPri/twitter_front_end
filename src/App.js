@@ -43,7 +43,7 @@ function App() {
             path="/liked"
             render={() => (
               <FeedPage
-                message="No results found, Adjust the search or like a post!"
+                message="No results found, adjust the search or like a post!"
                 filter={`likes__owner__account=${account_id}&ordering=-likes__created_at&`}
               />
             )}

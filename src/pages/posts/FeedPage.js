@@ -47,7 +47,6 @@ const FeedPage = ({ message, filter = "" }) => {
               ))
             ) : (
               <div className="p-6 bg-link-color flex flex-col w-[80%] items-center justify-center rounded-md h-fit">
-                <h2 className="text-text-color text-3xl">404</h2>
                 <p className="text-text-color text-md">{message}</p>
               </div>
             )}
