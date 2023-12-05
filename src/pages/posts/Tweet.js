@@ -110,9 +110,13 @@ const Tweet = (props) => {
         ) : (
           <OverlayTrigger
             placement="top"
-            overlay={<Tooltip>Log in to like a post</Tooltip>}
+            overlay={
+              <Tooltip className="bg-link-color text-text-color mb-2 p-4 rounded-md transition-opacity ease-in-out duration-350">
+                Log in to like a post
+              </Tooltip>
+            }
           >
-            <AiOutlineHeart size={25} />
+            <AiOutlineHeart size={25} className="hover:cursor-pointer" />
           </OverlayTrigger>
         )}
         {likes_count}
