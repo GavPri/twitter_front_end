@@ -14,7 +14,7 @@ const FeedPage = ({ message, filter = "" }) => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const { data } = await axiosReq.get(`tweets/?${filter}`);
+        const { data } = await axiosReq.get(`tweets/?${filter}search=${query}`);
         setTweets(data);
         setHasLoaded(true);
       } catch (err) {
