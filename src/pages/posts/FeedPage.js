@@ -77,7 +77,7 @@ const FeedPage = ({ message, filter = "" }) => {
                   </div>
                 }
                 hasMore={!!tweets.next}
-                next={() => fetchMoreData}
+                next={() => fetchMoreData(tweets, setTweets)}
               />
             ) : (
               <div className="p-6 bg-link-color flex flex-col w-[80%] items-center justify-center rounded-md h-fit">
