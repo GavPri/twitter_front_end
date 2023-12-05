@@ -9,15 +9,17 @@ const FeedPage = ({ message, filter = "" }) => {
   const [tweets, setTweets] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
-  const [loadingBarProgress, setLoadingBarProgress] = useState(0)
+  const [loadingBarProgress, setLoadingBarProgress] = useState(0);
   // Search
   const [query, SetQuery] = useState("");
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        setLoadingBarProgress(75);
         const { data } = await axiosReq.get(`tweets/?${filter}search=${query}`);
         setTweets(data);
+        setLoadingBarProgress(100);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -34,6 +36,15 @@ const FeedPage = ({ message, filter = "" }) => {
 
   return (
     <div>
+      <div className="fixed top-0 left-0 h-4 w-full z-50">
+        <LoadingBar
+          height={3}
+          color="#e11d48" // Set the color to bright blue (you can use any other color code)
+          progress={loadingBarProgress}
+          onLoaderFinished={() => setLoadingBarProgress(0)}
+          // className="fixed top-0 left-0 h-[3px] w-full z-50"
+        />
+      </div>
       <Form onSubmit={(event) => event.preventDefault()} className="mt-4 ">
         <Form.Control
           value={query}
