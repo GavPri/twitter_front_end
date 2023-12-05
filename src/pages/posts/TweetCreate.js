@@ -41,7 +41,9 @@ function TweetCreate() {
     event.preventDefault();
     const formData = new FormData();
     formData.append("content", content);
-    formData.append("image", imageInput.current.files[0]);
+    if (imageInput.current.files.length > 0) {
+      formData.append("image", imageInput.current.files[0]);
+    }
 
     try {
       const { data } = await axiosReq.post("/tweets/", formData);
