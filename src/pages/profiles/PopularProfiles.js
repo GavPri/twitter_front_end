@@ -5,8 +5,11 @@ import Avatar from "../../components/Avatar";
 import { NavLink } from "react-bootstrap";
 
 const PopularProfiles = () => {
-  // current user
+  // --- current user
   const currentUser = useCurrentUser();
+  const isOwner = currentUser?.username === owner
+
+  // --- destruct data
   const [accountData, setAccountData] = useState({
     pageAccount: { results: [] },
     popularAccounts: { results: [] },
@@ -49,7 +52,7 @@ const PopularProfiles = () => {
   }, []);
 
   return (
-    <div className="mt-4 rounded-md bg-tweet-container-background border-2 border-tweet-border-color md:flex-col md:fixed md:right-0 md:top-20 md:items-start md:mt-0 md:w-fit">
+    <div className="mt-4 rounded-md bg-tweet-container-background border-2 border-tweet-border-color md:flex-col md:fixed md:right-4 md:top-20 md:items-start md:mt-0 md:w-fit">
       <p className="text-text-color text-lg w-full md:p-2">Popular Profiles</p>
       <div
         className={`flex ${
@@ -60,7 +63,7 @@ const PopularProfiles = () => {
           .slice(0, isMobile ? 5 : undefined)
           .map((account) => (
             <NavLink
-              to="/"
+              to={`/accounts/${id}`}
               className={`flex ${
                 isMobile ? "flex-row" : null
               } items-center md:mb-2`}
