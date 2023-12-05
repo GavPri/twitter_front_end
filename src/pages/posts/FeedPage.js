@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import Tweet from "./Tweet";
 import { axiosReq } from "../../api/axiosDefaults";
+import { Form } from "react-bootstrap";
 
 const FeedPage = ({ message, filter = "" }) => {
   const [tweets, setTweets] = useState({ results: [] });
@@ -23,23 +24,32 @@ const FeedPage = ({ message, filter = "" }) => {
   }, [filter, pathname]);
 
   return (
-    <div className="flex flex-col mt-4 items-center justify-start rounded-md">
-      {hasLoaded ? (
-        <>
-          {tweets.results.length ? (
-            tweets.results.map((tweet) => (
-              <Tweet key={tweet.id} {...tweet} setTweets={setTweets} />
-            ))
-          ) : (
-            <div className="p-6 bg-link-color flex flex-col w-[80%] items-center justify-center rounded-md h-fit">
-              <h2 className="text-text-color text-3xl">404</h2>
-              <p className="text-text-color text-md">{message}</p>
-            </div>
-          )}
-        </>
-      ) : (
-        console.log("loading")
-      )}
+    <div>
+      <Form onSubmit={(event) => event.preventDefault()} className="mt-4 ">
+        <Form.Control
+          type="text"
+          className="p-2 bg-background-color border-2 text-link-color focus:outline-none border-tweet-border-color placeholder:italic placeholder:text-link-color rounded-md w-[360px] md:max-w-[432px]"
+          placeholder="Search..."
+        />
+      </Form>
+      <div className="flex flex-col mt-4 items-center justify-start rounded-md">
+        {hasLoaded ? (
+          <>
+            {tweets.results.length ? (
+              tweets.results.map((tweet) => (
+                <Tweet key={tweet.id} {...tweet} setTweets={setTweets} />
+              ))
+            ) : (
+              <div className="p-6 bg-link-color flex flex-col w-[80%] items-center justify-center rounded-md h-fit">
+                <h2 className="text-text-color text-3xl">404</h2>
+                <p className="text-text-color text-md">{message}</p>
+              </div>
+            )}
+          </>
+        ) : (
+          console.log("loading")
+        )}
+      </div>
     </div>
   );
 };
