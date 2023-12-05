@@ -78,10 +78,11 @@ const Tweet = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <NavLink to={`/tweets/${id}`}>
-        <Card.Body className=" flex items-start w-full h-full py-4">
-          {content}
-        </Card.Body>
+      <NavLink
+        to={`/tweets/${id}`}
+        className="flex flex-col items-start justify-start w-full h-full py-4"
+      >
+        <Card.Body className="mb-4">{content}</Card.Body>
         {image ? <Card.Img src={image} alt="content"></Card.Img> : null}
       </NavLink>
       <div className="w-full h-fit mt-4 p-4 bg-accent-color flex items-center justify-center rounded-md">
