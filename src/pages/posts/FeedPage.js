@@ -8,6 +8,8 @@ const FeedPage = ({ message, filter = "" }) => {
   const [tweets, setTweets] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
+  // Search
+  const [query, SetQuery] = useState("");
 
   useEffect(() => {
     const fetchPosts = async () => {
