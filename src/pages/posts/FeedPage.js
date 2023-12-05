@@ -6,6 +6,7 @@ import { Form } from "react-bootstrap";
 import LoadingBar from "react-top-loading-bar";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import PopularProfiles from "../profiles/PopularProfiles";
 
 const FeedPage = ({ message, filter = "" }) => {
   const [tweets, setTweets] = useState({ results: [] });
@@ -46,6 +47,9 @@ const FeedPage = ({ message, filter = "" }) => {
           onLoaderFinished={() => setLoadingBarProgress(0)}
         />
       </div>
+      {/* Popular Profiles */}
+      <PopularProfiles />
+      {/* ----- */}
       <Form onSubmit={(event) => event.preventDefault()} className="mt-4 ">
         <Form.Control
           value={query}

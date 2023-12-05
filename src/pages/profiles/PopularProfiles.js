@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 
 const PopularProfiles = () => {
-  return (
-    <div>PopularProfiles
-        <p className='text-text-color text-lg'>Most Followed Profiles</p>
-    </div>
-  )
-}
+  const [accountData, setAccountData] = useState({
+    pageAccount: { results: [] },
+    popularAccounts: { results: [] },
+  });
+  const popularAccounts = accountData;
 
-export default PopularProfiles
+  useEffect(() => {
+    const handleMount = async () => {
+        try {
+            
+        } catch (err) {
+            
+        }
+    }
+  })
+  return (
+    <div className="mt-4">
+      <p className="text-text-color text-lg">Most Followed Profiles</p>
+    </div>
+  );
+};
+
+export default PopularProfiles;
