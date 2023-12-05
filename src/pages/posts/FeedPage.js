@@ -5,6 +5,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { Form } from "react-bootstrap";
 import LoadingBar from "react-top-loading-bar";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 const FeedPage = ({ message, filter = "" }) => {
   const [tweets, setTweets] = useState({ results: [] });
@@ -76,7 +77,7 @@ const FeedPage = ({ message, filter = "" }) => {
                   </div>
                 }
                 hasMore={!!tweets.next}
-                next={() => {}}
+                next={() => fetchMoreData}
               />
             ) : (
               <div className="p-6 bg-link-color flex flex-col w-[80%] items-center justify-center rounded-md h-fit">
