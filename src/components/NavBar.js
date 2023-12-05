@@ -90,7 +90,12 @@ const NavBar = () => {
     <header className="fixed top-0 left-0 w-full h-16 flex p-4 items-center text-text-color bg-nav-background">
       <nav className="w-full flex items-center justify-between">
         <NavLink to="/">
-          <h1>Twitter Clone</h1>
+          {" "}
+          {mobileMenu ? (
+            <h1 onClick={handleMenu}>Twitter Clone</h1>
+          ) : (
+            <h1>Twitter Clone</h1>
+          )}
         </NavLink>
         <ul className="hidden md:flex items-center uppercase">
           <NavLink exact to="/" activeClassName="text-accent-color">

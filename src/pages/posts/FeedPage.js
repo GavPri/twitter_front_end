@@ -23,7 +23,7 @@ const FeedPage = ({ message, filter = "" }) => {
   }, [filter, pathname]);
 
   return (
-    <div className="flex flex-col mt-24 items-center justify-start rounded-md">
+    <div className="flex flex-col mt-4 items-center justify-start rounded-md">
       {hasLoaded ? (
         <>
           {tweets.results.length ? (

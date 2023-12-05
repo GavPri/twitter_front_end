@@ -61,7 +61,7 @@ const Tweet = (props) => {
   const is_owner = currentUser?.username === owner;
   return (
     // Boot strap card
-    <Card className="flex flex-col items-center justify-between bg-tweet-container-background p-4 rounded-md max-w-[360px] md:max-w-[432px] text-text-color mb-16">
+    <Card className="flex flex-col items-center justify-between bg-tweet-container-background p-4 rounded-md max-w-[360px] md:max-w-[432px] text-text-color mb-4">
       <Card.Body className="w-full h-full border-b-2 border-tweet-border-color pb-2">
         <Media className="flex items-center justify-between w-full ">
           <div className="flex items-center justify-start w-[33%]">
