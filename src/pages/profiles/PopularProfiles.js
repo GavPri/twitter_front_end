@@ -49,28 +49,30 @@ const PopularProfiles = () => {
   }, []);
 
   return (
-    <div className="mt-4 rounded-md bg-tweet-container-background border-2 border-tweet-border-color md:flex-col md:fixed md:right-0 md:top-20  md:items-start   md:mt-0 md:w-fit">
+    <div className="mt-4 rounded-md bg-tweet-container-background border-2 border-tweet-border-color md:flex-col md:fixed md:right-0 md:top-20 md:items-start md:mt-0 md:w-fit">
       <p className="text-text-color text-lg w-full md:p-2">Popular Profiles</p>
-      {popularAccounts.results
-        .slice(0, isMobile ? 5 : undefined)
-        .map((account) => (
-          <NavLink
-            to="/"
-            className="md:flex md:flex-row-reverse md:mb-4 md:ml-2"
-          >
-            <p
-              className="md:ml-2 text-text-color hover:cursor-pointer hover:text-link-color"
+      <div
+        className={`flex ${
+          isMobile ? "flex-row justify-between" : "md:flex-col"
+        } md:mb-4 md:ml-2 m-2`}
+      >
+        {popularAccounts.results
+          .slice(0, isMobile ? 5 : undefined)
+          .map((account) => (
+            <NavLink
+              to="/"
+              className={`flex ${
+                isMobile ? "flex-row" : null
+              } items-center md:mb-2`}
               key={account.id}
             >
-              {account.owner}
-            </p>
-            <Avatar
-              src={account.image}
-              className="hidden md:block"
-              height={30}
-            />
-          </NavLink>
-        ))}
+              <Avatar src={account.image} height={20} />
+              <p className="ml-1 mr-2 text-text-color hover:cursor-pointer hover:text-link-color">
+                {account.owner}
+              </p>
+            </NavLink>
+          ))}
+      </div>
     </div>
   );
 };
