@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const PopularProfiles = () => {
+    // current user
+    const currentUser = useCurrentUser
   const [accountData, setAccountData] = useState({
     pageAccount: { results: [] },
     popularAccounts: { results: [] },
@@ -18,8 +21,12 @@ const PopularProfiles = () => {
             ...prevState,
             popularAccounts : data,
         }))
-      } catch (err) {}
+      } catch (err) {
+        console.log(err)
+      }
     };
+
+    handleMount()
   });
   return (
     <div className="mt-4">
