@@ -23,7 +23,7 @@ const FeedPage = ({ message, filter = "" }) => {
     };
     setHasLoaded(false);
     fetchPosts();
-  }, [filter, pathname]);
+  }, [filter, pathname, query]);
 
   return (
     <div>
