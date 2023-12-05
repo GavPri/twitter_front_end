@@ -19,13 +19,13 @@ const Tweet = (props) => {
     content,
     image,
     tweetPage,
-    setTweet,
+    setTweets,
   } = props;
   // handleLike function
   const handleLike = async () => {
     try {
       const { data } = await axiosRes.post("/likes/", { tweet: id });
-      setTweet((prevTweet) => ({
+      setTweets((prevTweet) => ({
         ...prevTweet,
         results: prevTweet.results.map((tweet) => {
           return tweet.id === id
@@ -40,7 +40,7 @@ const Tweet = (props) => {
   const handleUnLike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}`);
-      setTweet((prevTweets) => ({
+      setTweets((prevTweets) => ({
         ...prevTweets,
         results: prevTweets.results.map((tweet) => {
           return tweet.id === id
@@ -61,7 +61,7 @@ const Tweet = (props) => {
   const is_owner = currentUser?.username === owner;
   return (
     // Boot strap card
-    <Card className="flex flex-col items-center justify-between bg-tweet-container-background p-4 rounded-md text-text-color mb-16">
+    <Card className="flex flex-col items-center justify-between bg-tweet-container-background p-4 rounded-md max-w-[360px] md:max-w-[432px] text-text-color mb-16">
       <Card.Body className="w-full h-full border-b-2 border-tweet-border-color pb-2">
         <Media className="flex items-center justify-between w-full ">
           <div className="flex items-center justify-start w-[33%]">
