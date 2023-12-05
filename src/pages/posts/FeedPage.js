@@ -3,11 +3,13 @@ import { useLocation } from "react-router";
 import Tweet from "./Tweet";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Form } from "react-bootstrap";
+import LoadingBar from "react-top-loading-bar";
 
 const FeedPage = ({ message, filter = "" }) => {
   const [tweets, setTweets] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
+  const [loadingBarProgress, setLoadingBarProgress] = useState(0)
   // Search
   const [query, SetQuery] = useState("");
 
@@ -53,6 +55,7 @@ const FeedPage = ({ message, filter = "" }) => {
             ) : (
               <div className="p-6 bg-link-color flex flex-col w-[80%] items-center justify-center rounded-md h-fit">
                 <p className="text-text-color text-md">{message}</p>
+                {/* Progress bar */}
               </div>
             )}
           </>
