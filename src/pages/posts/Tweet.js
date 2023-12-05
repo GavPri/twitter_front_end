@@ -71,8 +71,10 @@ const Tweet = (props) => {
             <span className="block ml-4">{owner}</span>
           </div>
           <div className="flex items-center justify-end w-[40%]">
-            <span className="text-sm mr-4">{updated_at}</span>
-            {is_owner && tweetPage && "..."}
+            <span className="text-sm mr-4">
+              {updated_at}
+              {is_owner && tweetPage && "..."}
+            </span>
           </div>
         </Media>
       </Card.Body>
@@ -81,7 +83,7 @@ const Tweet = (props) => {
       </Card.Body>
       {image ? <Card.Img src={image} alt="content"></Card.Img> : null}
 
-      <div className="w-full h-fit mt-4 p-4 bg-accent-color flex items-center justify-center">
+      <div className="w-full h-fit mt-4 p-4 bg-accent-color flex items-center justify-center rounded-md">
         {/* Check if current user is the owner */}
         {is_owner ? (
           <OverlayTrigger
