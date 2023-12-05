@@ -82,10 +82,17 @@ const Tweet = (props) => {
         to={`/tweets/${id}`}
         className="flex flex-col items-start justify-start w-full h-full py-4"
       >
-        <Card.Body className="mb-4">{content}</Card.Body>
-        {image ? <Card.Img src={image} alt="content"></Card.Img> : null}
+        {image ? (
+          <>
+            <Card.Body className="mb-4">{content}</Card.Body>
+            <Card.Img src={image} alt="content" />
+          </>
+        ) : (
+          <Card.Body className="mb-2">{content}</Card.Body>
+        )}
       </NavLink>
-      <div className="w-full h-fit mt-4 p-4 bg-accent-color flex items-center justify-center rounded-md">
+
+      <div className="w-full h-fit p-4 bg-accent-color flex items-center justify-center rounded-md">
         {/* Check if current user is the owner */}
         {is_owner ? (
           <OverlayTrigger
