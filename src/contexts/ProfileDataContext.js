@@ -1,8 +1,10 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
+import { axiosReq } from "../api/axiosDefaults";
+import { useCurrentUser } from "./CurrentUserContext";
 
 // ----- Create Context Objects
 export const AccountDataContext = createContext();
-export const setAccountDataContext = createContext();
+export const SetAccountDataContext = createContext();
 
 // ---- Custom hooks
 export const useAccountData = () => createContext(AccountDataContext);
@@ -39,9 +41,9 @@ export const AccountDataProvider = ({ children }) => {
 
   return (
     <AccountDataContext.Provider value={accountData}>
-      <setAccountDataContext.Provider value={setAccountData}>
+      <SetAccountDataContext.Provider value={setAccountData}>
         {children}
-      </setAccountDataContext.Provider>
+      </SetAccountDataContext.Provider>
     </AccountDataContext.Provider>
   );
 };
