@@ -44,6 +44,9 @@ const AccountPage = () => {
       <div>
         <div>
           <h3>{account?.owner}</h3>
+          <p>
+            {account?.tweet_count} <span>posts</span>
+          </p>
         </div>
         <div>{/* follow button  or edit profile button*/}</div>
       </div>
