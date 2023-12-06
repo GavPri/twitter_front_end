@@ -9,8 +9,8 @@ import {
 import { Button, Image } from "react-bootstrap";
 import PopularProfiles from "./PopularAccounts";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Tweet from '../posts/Tweet'
-import {fetchMoreData} from '../../utils/utils'
+import Tweet from "../posts/Tweet";
+import { fetchMoreData } from "../../utils/utils";
 
 const AccountPage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -49,7 +49,7 @@ const AccountPage = () => {
   }, [id, setAccountData]);
   return (
     <div className="w-fit h-fit">
-      <div className="mt-16 h-fit bg-profile-background w-[320px] md:w-[640px] p-4 border-2 border-tweet-border-color flex rounded">
+      <div className="mt-6 mb-4 h-fit bg-profile-background w-[320px] md:w-[640px] p-4 border-2 border-tweet-border-color flex rounded">
         <div className="flex justify-center w-80% items-start basis-1/4">
           <Image src={account?.image} className="rounded-full" />
         </div>
@@ -87,18 +87,23 @@ const AccountPage = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="flex flex-col items-center">
         {accountTweets.results.length ? (
           <InfiniteScroll
             children={accountTweets.results.map((tweet) => (
-              <Tweet key={tweet.id} {...tweet} setPosts={setAccountTweets} />
+              <Tweet
+                key={tweet.id}
+                {...tweet}
+                setPosts={setAccountTweets}
+                className="w-full"
+              />
             ))}
             dataLength={accountTweets.results.length}
             hasMore={!!accountTweets.next}
             next={() => fetchMoreData(accountTweets, setAccountTweets)}
           />
         ) : (
-          <p>Loading Posts..</p>
+          <p className=" text-text-color">Loading Posts..</p>
         )}
       </div>
     </div>
