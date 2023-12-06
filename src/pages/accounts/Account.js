@@ -43,7 +43,7 @@ const Account = (props) => {
                 focus:ring-2
                 focus:ring-offset-2"
               >
-                unfollow
+                Unfollow
               </Button>
             ) : (
               <Button
@@ -62,7 +62,7 @@ const Account = (props) => {
                 focus:ring-2
                 focus:ring-offset-2"
               >
-                follow
+                Follow
               </Button>
             ))}
         </div>

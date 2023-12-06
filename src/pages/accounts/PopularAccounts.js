@@ -59,19 +59,17 @@ const PopularProfiles = () => {
           isMobile ? "flex-row justify-between" : "md:flex-col"
         } md:mb-4 md:ml-2 m-2`}
       >
-        {popularAccounts.results
-          .slice(0, isMobile ? 5 : undefined)
-          .map((account) => (
-            <Link
-              to={`/accounts/${account.id}`}
-              className={`flex ${
-                isMobile ? "flex-row" : null
-              } items-center md:mb-2`}
-              key={account.id}
-            >
-              <Account key={account.id} account={account} isMobile={isMobile} />
-            </Link>
-          ))}
+        {popularAccounts.results.slice(0, isMobile ? 5 : 8).map((account) => (
+          <Link
+            to={`/accounts/${account.id}`}
+            className={`flex ${
+              isMobile ? "flex-row" : null
+            } items-center md:mb-2`}
+            key={account.id}
+          >
+            <Account key={account.id} account={account} isMobile={isMobile} />
+          </Link>
+        ))}
       </div>
     </div>
   );
