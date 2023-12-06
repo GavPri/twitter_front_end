@@ -7,8 +7,8 @@ const AccountDataContext = createContext();
 const SetAccountDataContext = createContext();
 
 // ---- Custom hooks
-export const useAccountData = () => createContext(AccountDataContext);
-export const useSetAccountData = () => createContext(SetAccountDataContext);
+export const useAccountData = () => useContext(AccountDataContext);
+export const useSetAccountData = () => useContext(SetAccountDataContext);
 
 // ---- export function component
 export const AccountDataProvider = ({ children }) => {
@@ -16,7 +16,7 @@ export const AccountDataProvider = ({ children }) => {
     pageAccount: { results: [] },
     popularAccounts: { results: [] },
   });
-  const { popularAccounts } = accountData;
+  // const { popularAccounts } = accountData;
 
   const currentUser = useCurrentUser();
 
