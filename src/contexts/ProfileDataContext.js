@@ -7,3 +7,8 @@ export const setProfileDataContext = createContext();
 // ---- Custom hooks
 export const useProfileData = () => createContext(ProfileDataContext)
 export const useSetProfileData = () => createContext(setProfileDataContext);
+
+// ---- export function component
+export const ProfileDataProvider = ({children}) => {
+    
+}
