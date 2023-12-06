@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Avatar from "../../components/Avatar";
-import { NavLink } from "react-bootstrap";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import Account from "./Account";
 
 const PopularProfiles = () => {
   // --- current user
   const currentUser = useCurrentUser();
-  const isOwner = currentUser?.username === owner
-
   // --- destruct data
   const [accountData, setAccountData] = useState({
     pageAccount: { results: [] },
@@ -16,6 +15,7 @@ const PopularProfiles = () => {
   });
   const { popularAccounts } = accountData;
 
+  // request for profiles
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -62,18 +62,15 @@ const PopularProfiles = () => {
         {popularAccounts.results
           .slice(0, isMobile ? 5 : undefined)
           .map((account) => (
-            <NavLink
-              to={`/accounts/${id}`}
+            <Link
+              to={`/accounts/${account.id}`}
               className={`flex ${
                 isMobile ? "flex-row" : null
               } items-center md:mb-2`}
               key={account.id}
             >
-              <Avatar src={account.image} height={20} />
-              <p className="ml-1 mr-2 text-text-color hover:cursor-pointer hover:text-link-color">
-                {account.owner}
-              </p>
-            </NavLink>
+              <Account key={account.id} account={account} isMobile={isMobile} />
+            </Link>
           ))}
       </div>
     </div>

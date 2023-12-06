@@ -6,7 +6,7 @@ import { Form } from "react-bootstrap";
 import LoadingBar from "react-top-loading-bar";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles";
+import PopularProfiles from "../accounts/PopularAccounts";
 
 const FeedPage = ({ message, filter = "" }) => {
   const [tweets, setTweets] = useState({ results: [] });
