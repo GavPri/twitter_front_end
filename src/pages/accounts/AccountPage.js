@@ -26,7 +26,7 @@ const AccountPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageAccount }] = await Promise.all([
+        const [{ data: pageAccount }, {data: accountTweets}] = await Promise.all([
           axiosReq.get(`/accounts/${id}/`),
           axiosReq.get(`/tweets/?owner__account=${id}`),
         ]);
@@ -34,6 +34,7 @@ const AccountPage = () => {
           ...prevState,
           pageAccount: { results: [pageAccount] },
         }));
+        setAccountTweets(accountTweets)
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
