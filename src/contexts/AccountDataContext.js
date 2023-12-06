@@ -8,7 +8,7 @@ const SetAccountDataContext = createContext();
 
 // ---- Custom hooks
 export const useAccountData = () => createContext(AccountDataContext);
-export const useSetAccountData = () => createContext(setAccountDataContext);
+export const useSetAccountData = () => createContext(SetAccountDataContext);
 
 // ---- export function component
 export const AccountDataProvider = ({ children }) => {
