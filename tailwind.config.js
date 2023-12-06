@@ -11,7 +11,7 @@ module.exports = {
       "accent-color": "#657786",
       "tweet-container-background": "#192734",
       "tweet-border-color": "#253341",
-      "profile-background'": "#1c2938",
+      "profile-background": "#1C2938",
       "profile-text-color": "#aab8c2",
       warning: "#e11d48",
       "file-text": "#06B6D4",

@@ -56,13 +56,7 @@ function App() {
           <Route exact path="/tweets/create" render={() => <TweetCreate />} />
           <Route exact path="/tweets/:id" render={() => <TweetPage />} />
           {/* Account */}
-          <Route
-            exact
-            path="/accounts/:id"
-            render={() => {
-              <AccountPage />;
-            }}
-          />
+          <Route exact path="/accounts/:id" render={() => <AccountPage />} />
         </Switch>
       </div>
     </div>
