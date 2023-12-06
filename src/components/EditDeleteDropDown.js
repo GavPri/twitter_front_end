@@ -15,6 +15,25 @@ const TweetDropDown = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
+export const EditDeletDropDown = () => {
+    return (
+      <Dropdown>
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+          Custom toggle
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu as={CustomMenu}>
+          <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+          <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+          <Dropdown.Item eventKey="3" active>
+            Orange
+          </Dropdown.Item>
+          <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    );
+}
+
 // forwardRef again here!
 // Dropdown needs access to the DOM of the Menu to measure it
 const CustomMenu = React.forwardRef(
