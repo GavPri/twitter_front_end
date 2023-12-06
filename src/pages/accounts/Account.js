@@ -8,7 +8,7 @@ const Account = (props) => {
   const { account, isMobile, imageSize = 35 } = props;
   const { id, following_id, image, owner } = account;
 
-  const currentUser = useCurrentUser;
+  const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   return (
     <div className="w-full">
