@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import { useSetAccountData } from "../../contexts/AccountDataContext";
+import {
+  useAccountData,
+  useSetAccountData,
+} from "../../contexts/AccountDataContext";
+import { Image } from "react-bootstrap";
+import PopularProfiles from "./PopularAccounts";
 
 const AccountPage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -11,6 +16,8 @@ const AccountPage = () => {
   const { id } = useParams();
   // account data
   const setAccountData = useSetAccountData();
+  const { pageAccount } = useAccountData();
+  const [account] = pageAccount.results;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,14 +31,17 @@ const AccountPage = () => {
         }));
         setHasLoaded(true);
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     };
-    fetchData()
+    fetchData();
   }, [id, setAccountData]);
   return (
     <div className="mt-16 h-24 bg-profile-background w-fit p-4 border-2 border-tweet-border-color ">
-      <div>{/* Avatar */}</div>
+      <div>
+        {" "}
+        <Image src={account?.image} className="rounded-full" />
+      </div>
       <div>
         <div>{/* user info */}</div>
         <div>{/* follow button  or edit profile button*/}</div>
