@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosRes } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { EditDeleteDropDown } from "../../components/MoreDropDown";
 
 const Tweet = (props) => {
   const {
@@ -73,7 +74,7 @@ const Tweet = (props) => {
           <div className="flex items-center justify-end w-[50%]">
             <span className="text-xs md:text-sm mr-4">
               {updated_at}
-              {is_owner && tweetPage && "..."}
+              {is_owner && tweetPage && <EditDeleteDropDown />}
             </span>
           </div>
         </Media>
