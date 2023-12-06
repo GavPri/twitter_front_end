@@ -6,7 +6,7 @@ import {
   useAccountData,
   useSetAccountData,
 } from "../../contexts/AccountDataContext";
-import { Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 import PopularProfiles from "./PopularAccounts";
 
 const AccountPage = () => {
@@ -18,6 +18,8 @@ const AccountPage = () => {
   const setAccountData = useSetAccountData();
   const { pageAccount } = useAccountData();
   const [account] = pageAccount.results;
+  // check if logged in user owns the profile
+  const is_owner = currentUser?.username === account?.owner;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,7 +62,19 @@ const AccountPage = () => {
             </p>
           </div>
         </div>
-        <div>{/* follow button  or edit profile button*/}</div>
+        <div>
+          {currentUser &&
+            !is_owner &&
+            (account?.following_id ? (
+              <Button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                Unfollow
+              </Button>
+            ) : (
+              <Button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                Follow
+              </Button>
+            ))}
+        </div>
       </div>
     </div>
   );
