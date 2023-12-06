@@ -1,15 +1,15 @@
 import { createContext } from "react";
 
 // ----- Create Context Objects
-export const ProfileDataContext = createContext();
-export const setProfileDataContext = createContext();
+export const AccountDataContext = createContext();
+export const setAccountDataContext = createContext();
 
 // ---- Custom hooks
-export const useProfileData = () => createContext(ProfileDataContext);
-export const useSetProfileData = () => createContext(setProfileDataContext);
+export const useAccountData = () => createContext(AccountDataContext);
+export const useSetAccountData = () => createContext(setAccountDataContext);
 
 // ---- export function component
-export const ProfileDataProvider = ({ children }) => {
+export const AccountDataProvider = ({ children }) => {
   const [accountData, setAccountData] = useState({
     pageAccount: { results: [] },
     popularAccounts: { results: [] },
