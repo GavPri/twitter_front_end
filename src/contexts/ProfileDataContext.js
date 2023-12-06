@@ -36,4 +36,12 @@ export const AccountDataProvider = ({ children }) => {
 
     handleMount();
   }, [currentUser]);
+
+  return (
+    <AccountDataContext.Provider value={accountData}>
+      <setAccountDataContext.Provider value={setAccountData}>
+        {children}
+      </setAccountDataContext.Provider>
+    </AccountDataContext.Provider>
+  );
 };
