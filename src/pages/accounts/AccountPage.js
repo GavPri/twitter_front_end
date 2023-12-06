@@ -23,8 +23,11 @@ const AccountPage = () => {
           pageAccount: { results: [pageAccount] },
         }));
         setHasLoaded(true);
-      } catch (err) {}
+      } catch (err) {
+        console.log(err)
+      }
     };
+    fetchData()
   });
   return (
     <div className="mt-16 h-24 bg-profile-background w-fit p-4 border-2 border-tweet-border-color ">
