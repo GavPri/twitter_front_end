@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
 
 const AccountPage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -9,6 +10,15 @@ const AccountPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [{data : pageAccount }] = await Promise.all([
+          axiosReq.get(`/accounts/${id}/`)
+        ])
+      } catch (err) {
+        
+      }
+    }
     setHasLoaded(true);
   });
   return (
