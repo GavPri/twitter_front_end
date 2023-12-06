@@ -10,19 +10,21 @@ const AccountPage = () => {
   // extarct id from url
   const { id } = useParams();
   // account data
-  const setAccountData = useSetAccountData()
+  const setAccountData = useSetAccountData();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{data : pageAccount }] = await Promise.all([
-          axiosReq.get(`/accounts/${id}/`)
-        ])
-      } catch (err) {
-        
-      }
-    }
-    setHasLoaded(true);
+        const [{ data: pageAccount }] = await Promise.all([
+          axiosReq.get(`/accounts/${id}/`),
+        ]);
+        setAccountData((prevState) => ({
+          ...prevState,
+          pageAccount: { results: [pageAccount] },
+        }));
+        setHasLoaded(true);
+      } catch (err) {}
+    };
   });
   return (
     <div className="mt-16 h-24 bg-profile-background w-fit p-4 border-2 border-tweet-border-color ">
