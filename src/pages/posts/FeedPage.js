@@ -50,14 +50,14 @@ const FeedPage = ({ message, filter = "" }) => {
       {/* Popular Profiles */}
       <PopularProfiles />
       {/* ----- */}
-      <Form onSubmit={(event) => event.preventDefault()} className="mt-4 ">
+      <Form onSubmit={(event) => event.preventDefault()} className="mt-4">
         <Form.Control
           value={query}
           onChange={(event) => {
             SetQuery(event.target.value);
           }}
           type="text"
-          className="p-2 bg-background-color border-2 text-link-color focus:outline-none border-tweet-border-color placeholder:italic placeholder:text-link-color rounded-md w-[360px] md:w-[432px]"
+          className="p-2 w-full bg-background-color border-2 text-link-color focus:outline-none border-tweet-border-color placeholder:italic placeholder:text-link-color rounded-md md:w-[640px]"
           placeholder="Search..."
         />
       </Form>
