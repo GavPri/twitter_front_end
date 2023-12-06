@@ -20,6 +20,8 @@ const AccountPage = () => {
   const [account] = pageAccount.results;
   // check if logged in user owns the profile
   const is_owner = currentUser?.username === account?.owner;
+  // use state for tweets
+  const [accountTweets, setAccountTweets] = useState({results : []})
 
   useEffect(() => {
     const fetchData = async () => {
