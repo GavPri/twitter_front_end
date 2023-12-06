@@ -21,13 +21,14 @@ const AccountPage = () => {
   // check if logged in user owns the profile
   const is_owner = currentUser?.username === account?.owner;
   // use state for tweets
-  const [accountTweets, setAccountTweets] = useState({results : []})
+  const [accountTweets, setAccountTweets] = useState({ results: [] });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [{ data: pageAccount }] = await Promise.all([
           axiosReq.get(`/accounts/${id}/`),
+          axiosReq.get(`/tweets/?owner__account=${id}`),
         ]);
         setAccountData((prevState) => ({
           ...prevState,
