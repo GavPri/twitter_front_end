@@ -5,7 +5,7 @@ const Avatar = ({ src, height, text }) => {
     <div className="flex">
       <span>
         <img
-          className="object-cover rounded full"
+          className="object-cover rounded-full"
           src={src}
           alt="avatar"
           height={height}
