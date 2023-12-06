@@ -1,38 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { axiosReq } from "../../api/axiosDefaults";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import Avatar from "../../components/Avatar";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Account from "./Account";
+import { useAccountData } from "../../contexts/AccountDataContext";
 
 const PopularProfiles = () => {
   // --- current user
-  const currentUser = useCurrentUser();
-  // --- destruct data
-  const [accountData, setAccountData] = useState({
-    pageAccount: { results: [] },
-    popularAccounts: { results: [] },
-  });
-  const { popularAccounts } = accountData;
+
+  // const { popularAccounts } = accountData;
 
   // request for profiles
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        const { data } = await axiosReq.get(
-          "/accounts/?ordering=-followers-count"
-        );
-        setAccountData((prevState) => ({
-          ...prevState,
-          popularAccounts: data,
-        }));
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    handleMount();
-  }, [currentUser]);
+  const { popularAccounts } = useAccountData();
 
   //   ----- Is mobile
   const [isMobile, setIsMobile] = useState(false);

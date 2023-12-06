@@ -3,8 +3,8 @@ import { axiosReq } from "../api/axiosDefaults";
 import { useCurrentUser } from "./CurrentUserContext";
 
 // ----- Create Context Objects
-export const AccountDataContext = createContext();
-export const SetAccountDataContext = createContext();
+const AccountDataContext = createContext();
+const SetAccountDataContext = createContext();
 
 // ---- Custom hooks
 export const useAccountData = () => createContext(AccountDataContext);
