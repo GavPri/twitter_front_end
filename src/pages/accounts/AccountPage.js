@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useSetAccountData } from "../../contexts/AccountDataContext";
 
 const AccountPage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useCurrentUser();
   // extarct id from url
   const { id } = useParams();
+  // account data
+  const setAccountData = useSetAccountData()
 
   useEffect(() => {
     const fetchData = async () => {
