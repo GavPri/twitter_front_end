@@ -5,30 +5,65 @@ import { Button } from "react-bootstrap";
 import Avatar from "../../components/Avatar";
 
 const Account = (props) => {
-  const { account, isMobile, imageSize = 55 } = props;
+  const { account, isMobile, imageSize = 35 } = props;
   const { id, following_id, image, owner } = account;
 
   const currentUser = useCurrentUser;
   const is_owner = currentUser?.username === owner;
   return (
-    <div>
+    <div className="w-full">
       <div className={`my-3 flex items-center ${isMobile ? "flex-col" : ""}`}>
         <div>
           <Link to={`/profiles/${id}`} className="self-center">
             <Avatar src={image} height={imageSize} />
           </Link>
         </div>
-        <div>
-          <strong>{owner}</strong>
+        <div className="ml-2">
+          <strong className="text-text-color text-sm">{owner}</strong>
         </div>
-        <div>
+        <div className="ml-auto">
           {!isMobile &&
             currentUser &&
             !is_owner &&
             (following_id ? (
-              <Button>unfollow</Button>
+              <Button
+                className="flex
+                justify-center
+                p-2
+                border
+                border-transparent
+                rounded-lg
+                shadow-sm
+                text-md
+                font-medium
+                text-text-color
+                bg-link-color
+                ml-2
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2"
+              >
+                unfollow
+              </Button>
             ) : (
-              <Button>follow</Button>
+              <Button
+                className="flex
+                justify-center
+                p-2
+                border
+                border-transparent
+                rounded-lg
+                shadow-sm
+                ml-2
+                font-medium
+                text-text-color
+                bg-link-color
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2"
+              >
+                follow
+              </Button>
             ))}
         </div>
       </div>
