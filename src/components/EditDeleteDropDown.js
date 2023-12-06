@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
+import { AiFillCaretDown } from "react-icons/ai";
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
-const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-  <a
-    href=""
+const TweetDropDown = React.forwardRef(({ onClick }, ref) => (
+  <AiFillCaretDown
     ref={ref}
     onClick={(e) => {
       e.preventDefault();
       onClick(e);
     }}
-  >
-    {children}
-    &#x25bc;
-  </a>
+  />
 ));
 
 // forwardRef again here!
