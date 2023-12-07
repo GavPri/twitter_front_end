@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { Image } from "react-bootstrap";
 import Avatar from "../../components/Avatar";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 const Reply = (props) => {
+  const currentUser = useCurrentUser();
   const { account_id, accountImage, owner, updated_at, content } = props;
   console.log(accountImage);
   return (
