@@ -10,6 +10,7 @@ import TweetPage from "./pages/posts/TweetPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import FeedPage from "./pages/posts/FeedPage";
 import AccountPage from "./pages/accounts/AccountPage";
+import TweetEdit from "./pages/posts/TweetEditForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -55,6 +56,7 @@ function App() {
           {/* Tweets */}
           <Route exact path="/tweets/create" render={() => <TweetCreate />} />
           <Route exact path="/tweets/:id" render={() => <TweetPage />} />
+          <Route exact path="/tweets/:id/edit" render={() => <TweetEdit />} />
           {/* Account */}
           <Route exact path="/accounts/:id" render={() => <AccountPage />} />
         </Switch>

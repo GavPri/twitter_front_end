@@ -3,7 +3,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Form } from "react-bootstrap";
 
-function TweetCreate() {
+function TweetEdit() {
   // ---- store errors
   const [errors, setErrors] = useState({});
 
@@ -174,4 +174,4 @@ function TweetCreate() {
   );
 }
 
-export default TweetCreate;
+export default TweetEdit;
