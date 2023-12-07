@@ -1,13 +1,11 @@
-import React from 'react'
-
-const handleChange = (event) => {
-    
-}
+import React from "react";
+import { useState } from "react";
 
 function ReplyFrom() {
-  return (
-    <div>ReplyFrom</div>
-  )
+  const [content, setContent] = useState("");
+
+  const handleChange = (event) => {};
+  return <div>ReplyFrom</div>;
 }
 
-export default ReplyFrom
+export default ReplyFrom;
