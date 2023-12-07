@@ -51,7 +51,7 @@ const TweetPage = () => {
         ) : null}
         {replies.results.length ? (
           replies.results.map((reply) => (
-            <Reply key={reply.id} {...replies} />
+            <Reply key={reply.id} {...reply} />
           ))
         ) : currentUser ? (
           <p>No replies yet, be the first to reply</p>
