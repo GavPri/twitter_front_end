@@ -71,7 +71,7 @@ const Tweet = (props) => {
             </NavLink>
             <span className="block ml-4">{owner}</span>
           </div>
-          <div className="flex items-end w-[50%] md:w-[30%]">
+          <div className="flex items-end w-[50%] md:w-[33%]">
             <span className="text-xs md:text-sm mr-4 flex items-center ">
               <span className="mr-2">{updated_at}</span>{" "}
               {is_owner && tweetPage && <EditDeleteDropDown />}
