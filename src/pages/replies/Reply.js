@@ -7,16 +7,31 @@ import { EditDeleteDropDown } from "../../components/MoreDropDown";
 import { axiosRes } from "../../api/axiosDefaults";
 const Reply = (props) => {
   const currentUser = useCurrentUser();
-  const { account_id, accountImage, owner, updated_at, content, id, setTweet, setReply } = props;
+  const {
+    account_id,
+    accountImage,
+    owner,
+    updated_at,
+    content,
+    id,
+    setTweet,
+    setReply,
+  } = props;
   const is_owner = currentUser?.username === owner;
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/replies/${id}`)
-    } catch (err) {
-      
-    }
-  }
+      await axiosRes.delete(`/replies/${id}`);
+      setTweet((prevTweets) => ({
+        results: [
+          {
+            ...prevTweets.results[0],
+            replies_count: prevTweets.results[0].replies_count - 1,
+          },
+        ],
+      }));
+    } catch (err) {}
+  };
 
   console.log(accountImage);
   return (
