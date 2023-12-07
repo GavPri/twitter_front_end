@@ -64,8 +64,8 @@ function TweetEdit() {
     }
 
     try {
-      const { data } = await axiosReq.post("/tweets/", formData);
-      history.push("/");
+      await axiosReq.put(`/tweets/${id}`, formData);
+      history.push(`/tweets/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -75,7 +75,7 @@ function TweetEdit() {
   };
 
   return (
-    <div className="w-[80%] md:w-[50%] p-6 rounded-md h-fit flex justify-center items-center mt-[80px] mb-12 bg-tweet-container-background">
+    <div className="w-[80%] mt-8 md:w-[50%] p-6 rounded-md h-fit flex justify-center items-center mb-12 bg-tweet-container-background">
       {/* text area  */}
       <form
         // enctype="multipart/form-data"
