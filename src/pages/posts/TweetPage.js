@@ -11,6 +11,10 @@ const TweetPage = () => {
   const { id } = useParams();
   const [tweet, setTweet] = useState({ results: [] });
 
+  const currentUser = useCurrentUser();
+  const account_image = currentUser?.account_image;
+  const [replies, setReplies] = useState({ results: [] });
+
   useEffect(() => {
     const handleMount = async () => {
       try {
