@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Tweet from "./Tweet";
 import { axiosReq } from "../../api/axiosDefaults";
-import ReplyFrom from "../replies/ReplyFrom";
+import ReplyForm from "../replies/ReplyFrom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import Avatar from "../../components/Avatar";
 
 const TweetPage = () => {
   //  access url
@@ -33,6 +35,19 @@ const TweetPage = () => {
   return (
     <div className="w-[100%] md:w-[50%] h-[full] mt-16 flex justify-center items-center">
       <Tweet {...tweet.results[0]} setTweet={setTweet} tweetPage />
+      <div>
+        {currentUser ? (
+          <ReplyForm
+            account_id={currentUser.account_id}
+            accountImage={account_image}
+            tweet={id}
+            setTweet={setTweet}
+            setReplies={setReplies}
+          />
+        ) : replies.results.length ? (
+          "Comments"
+        ) : null}
+      </div>
     </div>
   );
 };
