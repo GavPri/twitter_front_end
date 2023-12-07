@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Form } from "react-bootstrap";
+import { useParams } from "react-router";
 
 function TweetEdit() {
   // ---- store errors
@@ -36,6 +37,23 @@ function TweetEdit() {
       });
     }
   };
+  //   get the url
+  const { id } = useParams();
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/tweets/${id}`);
+        const { content, image, is_owner } = data;
+
+        is_owner ? setTweetData({ content, image }) : history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleMount();
+  }, [history, id]);
+
   // ---- Handle Submit
   const handleSubmit = async (event) => {
     event.preventDefault();
