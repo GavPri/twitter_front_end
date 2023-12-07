@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { axiosRes } from "../../api/axiosDefaults";
 
-function ReplyFrom() {
+function ReplyFrom(props) {
+    const { tweet, setTweet, setReplies, accountImage, account_id} = props
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
@@ -16,6 +17,10 @@ function ReplyFrom() {
         content, 
         tweet,
       });
+      setReplies((prevReplies) => ({
+        ...prevReplies,
+        results: [data, ...prevReplies.results]
+      }))
     } catch (err) {}
   };
 
