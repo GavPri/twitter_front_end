@@ -21,10 +21,45 @@ function ReplyFrom(props) {
         ...prevReplies,
         results: [data, ...prevReplies.results]
       }))
+      setTweet((prevTweet) => ({
+        results: [
+            {
+                ...prevTweet.results[0],
+                replies_count:prevTweet.results.comments + 1
+            }
+        ]
+      }))
+      setContent('')
     } catch (err) {}
   };
 
-  return <div>ReplyFrom</div>;
+  return (
+    <div>
+      <Form className="mt-2">
+        <Form.Group>
+          <InputGroup>
+            <Link to={`/accounts/${account_id_id}`}>
+              <Avatar src={accountImageImage} />
+            </Link>
+            <textarea
+              className="w-full px-3 py-2 border rounded-md resize-none"
+              placeholder="my reply..."
+              value={content}
+              onChange={handleChange}
+              rows={2}
+            />
+          </InputGroup>
+        </Form.Group>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-md ml-auto"
+          disabled={!content.trim()}
+          type="submit"
+        >
+          post
+        </button>
+      </Form>
+    </div>
+  );
 }
 
 export default ReplyFrom;
