@@ -80,7 +80,7 @@ const Tweet = (props) => {
           <div className="flex w-[50%] md:w-[30%]">
             <span className="text-xs md:text-sm mr-4 flex items-center ">
               <span className="mr-2">{updated_at}</span>{" "}
-              {is_owner && tweetPage && <EditDeleteDropDown />}
+              {is_owner && tweetPage && <EditDeleteDropDown  handleEdit={handleEdit}/>}
             </span>
           </div>
         </Media>
