@@ -6,7 +6,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { EditDeleteDropDown } from "../../components/MoreDropDown";
 const Reply = (props) => {
   const currentUser = useCurrentUser();
-  const { account_id, accountImage, owner, updated_at, content } = props;
+  const { account_id, accountImage, owner, updated_at, content, id, setTweet, setReply } = props;
   const is_owner = currentUser?.username === owner;
   console.log(accountImage);
   return (
