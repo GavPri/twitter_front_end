@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { Image } from "react-bootstrap";
 import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { EditDeleteDropDown } from "../../components/MoreDropDown";
 import { axiosRes } from "../../api/axiosDefaults";
+import { useState } from "react";
 const Reply = (props) => {
   const currentUser = useCurrentUser();
   const {
@@ -17,6 +18,7 @@ const Reply = (props) => {
     setTweet,
     setReply,
   } = props;
+  const [showEditForm, setShowEditForm] = useState(false);
   const is_owner = currentUser?.username === owner;
 
   const handleDelete = async () => {
