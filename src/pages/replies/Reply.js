@@ -5,6 +5,7 @@ import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 const Reply = (props) => {
   const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner
   const { account_id, accountImage, owner, updated_at, content } = props;
   console.log(accountImage);
   return (
