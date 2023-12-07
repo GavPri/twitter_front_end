@@ -4,7 +4,9 @@ import { useState } from "react";
 function ReplyFrom() {
   const [content, setContent] = useState("");
 
-  const handleChange = (event) => {};
+  const handleChange = (event) => {
+    setContent(event.target.value);
+  };
   return <div>ReplyFrom</div>;
 }
 
