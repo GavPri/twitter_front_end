@@ -6,8 +6,8 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { EditDeleteDropDown } from "../../components/MoreDropDown";
 const Reply = (props) => {
   const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === owner
   const { account_id, accountImage, owner, updated_at, content } = props;
+  const is_owner = currentUser?.username === owner;
   console.log(accountImage);
   return (
     <div className="flex text-text-color items-start w-[320px] p-4 rounded-md mb-2 md:w-[640px] bg-tweet-container-background">
@@ -21,7 +21,7 @@ const Reply = (props) => {
         </div>
         <p className="w-fit">{content}</p>
       </div>
-      <EditDeleteDropDown handleEdit={ () => {}} handleDelete={ () => {}}
+      <EditDeleteDropDown handleEdit={() => {}} handleDelete={() => {}} />
     </div>
   );
 };
