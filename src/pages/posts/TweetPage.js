@@ -20,12 +20,12 @@ const TweetPage = () => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: tweet }, {data : replies}] = await Promise.all([
+        const [{ data: tweet }, { data: replies }] = await Promise.all([
           axiosReq.get(`/tweets/${id}`),
-          axiosReq.get(`/replies/?tweet=${id}`)
+          axiosReq.get(`/replies/?tweet=${id}`),
         ]);
         setTweet({ results: [tweet] });
-        setReplies(replies)
+        setReplies(replies);
       } catch (err) {
         console.log(err);
       }
@@ -36,7 +36,7 @@ const TweetPage = () => {
   return (
     <div className="w-[100%] md:w-[50%] h-[full] mt-16 flex justify-center items-center flex-col">
       <Tweet {...tweet.results[0]} setTweet={setTweet} tweetPage />
-      <div className="flex items-center justify-between w-full">
+      <div className="flex flex-col items-center justify-between w-full">
         {currentUser ? (
           <ReplyForm
             account_id={currentUser.account_id}
@@ -46,8 +46,19 @@ const TweetPage = () => {
             setReplies={setReplies}
           />
         ) : replies.results.length ? (
-          "Comments"
+          "Replies"
         ) : null}
+        {replies.results.length ? (
+          replies.results.map((reply) => (
+            <p key={reply.id}>
+              {reply.owner}:{reply.content}
+            </p>
+          ))
+        ) : currentUser ? (
+          <p>No replies yet, be the first to reply</p>
+        ) : (
+          <p>No comments</p>
+        )}
       </div>
     </div>
   );
