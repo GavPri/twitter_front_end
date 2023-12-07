@@ -51,7 +51,7 @@ const Reply = (props) => {
         </div>
         <p className="w-fit">{content}</p>
       </div>
-      <EditDeleteDropDown handleEdit={() => {}} handleDelete={() => {}} />
+      <EditDeleteDropDown handleEdit={() => {}} handleDelete={handleDelete} />
     </div>
   );
 };
