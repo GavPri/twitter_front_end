@@ -20,12 +20,12 @@ const TweetPage = () => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: tweet }, {data : reply }] = await Promise.all([
+        const [{ data: tweet }, {data : replies}] = await Promise.all([
           axiosReq.get(`/tweets/${id}`),
           axiosReq.get(`/replies/?tweet=${id}`)
         ]);
         setTweet({ results: [tweet] });
-        console.log(tweet);
+        setReplies(replies)
       } catch (err) {
         console.log(err);
       }
