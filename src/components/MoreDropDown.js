@@ -21,7 +21,7 @@ const TweetDropDown = React.forwardRef(({ children, onClick }, ref) => (
   </a>
 ));
 
-export const EditDeleteDropDown = ({ handleEdit }) => {
+export const EditDeleteDropDown = ({ handleEdit, handleDelete }) => {
   return (
     <Dropdown>
       <Dropdown.Toggle as={TweetDropDown}>
@@ -37,6 +37,7 @@ export const EditDeleteDropDown = ({ handleEdit }) => {
           <AiOutlineEdit /> <p className="ml-2">Edit</p>
         </Dropdown.Item>
         <Dropdown.Item
+          onClick={handleDelete}
           eventKey="2"
           className="flex items-center justify-between"
         >

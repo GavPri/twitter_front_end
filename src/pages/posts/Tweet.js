@@ -89,7 +89,7 @@ const Tweet = (props) => {
             <span className="text-xs md:text-sm mr-4 flex items-center ">
               <span className="mr-2">{updated_at}</span>{" "}
               {is_owner && tweetPage && (
-                <EditDeleteDropDown handleEdit={handleEdit} />
+                <EditDeleteDropDown handleEdit={handleEdit} handleDelete={handleDelete}/>
               )}
             </span>
           </div>
