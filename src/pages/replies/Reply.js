@@ -22,13 +22,18 @@ const Reply = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/replies/${id}`);
-      setTweet((prevTweets) => ({
+      setTweet((prevTweet) => ({
         results: [
           {
-            ...prevTweets.results[0],
-            replies_count: prevTweets.results[0].replies_count - 1,
+            ...prevTweet.results[0],
+            replies_count: prevTweet.results[0].replies_count - 1,
           },
         ],
+      }));
+
+      setReply((prevReply) => ({
+        ...prevReply,
+        results: prevReply.results.filter((reply) => reply.id !== id),
       }));
     } catch (err) {}
   };
