@@ -8,6 +8,15 @@ const Reply = (props) => {
   const currentUser = useCurrentUser();
   const { account_id, accountImage, owner, updated_at, content, id, setTweet, setReply } = props;
   const is_owner = currentUser?.username === owner;
+
+  const handleDelete = async () => {
+    try {
+      
+    } catch (err) {
+      
+    }
+  }
+
   console.log(accountImage);
   return (
     <div className="flex text-text-color items-start w-[320px] p-4 rounded-md mb-2 md:w-[640px] bg-tweet-container-background">
