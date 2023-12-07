@@ -61,11 +61,19 @@ const Tweet = (props) => {
   //   Find out if current user owns the page
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  const history = useHistory()
-
+  const history = useHistory();
   const handleEdit = () => {
-    history.push(`/tweets/${id}/edit`)
-  }
+    history.push(`/tweets/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/tweets/${id}/`);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     // Boot strap card
     <Card className="flex flex-col items-center justify-between bg-tweet-container-background p-4 rounded-md w-[320px] md:w-[640px] text-text-color mb-4">
@@ -80,7 +88,9 @@ const Tweet = (props) => {
           <div className="flex w-[50%] md:w-[30%]">
             <span className="text-xs md:text-sm mr-4 flex items-center ">
               <span className="mr-2">{updated_at}</span>{" "}
-              {is_owner && tweetPage && <EditDeleteDropDown  handleEdit={handleEdit}/>}
+              {is_owner && tweetPage && (
+                <EditDeleteDropDown handleEdit={handleEdit} />
+              )}
             </span>
           </div>
         </Media>
