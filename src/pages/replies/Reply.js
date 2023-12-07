@@ -4,6 +4,7 @@ import { Image } from "react-bootstrap";
 import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { EditDeleteDropDown } from "../../components/MoreDropDown";
+import { axiosRes } from "../../api/axiosDefaults";
 const Reply = (props) => {
   const currentUser = useCurrentUser();
   const { account_id, accountImage, owner, updated_at, content, id, setTweet, setReply } = props;
@@ -11,7 +12,7 @@ const Reply = (props) => {
 
   const handleDelete = async () => {
     try {
-      
+      await axiosRes.delete(`/replies/${id}`)
     } catch (err) {
       
     }
