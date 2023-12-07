@@ -51,12 +51,12 @@ const TweetPage = () => {
         ) : null}
         {replies.results.length ? (
           replies.results.map((reply) => (
-            <Reply key={reply.id} {...reply} />
+            <Reply key={reply.id} {...reply} accountImage={account_image} />
           ))
         ) : currentUser ? (
           <p>No replies yet, be the first to reply</p>
         ) : (
-          <p>No comments</p>
+          <p>No replies</p>
         )}
       </div>
     </div>

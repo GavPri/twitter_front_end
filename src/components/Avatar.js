@@ -1,6 +1,7 @@
 import React from "react";
 
 const Avatar = ({ src, height, text }) => {
+  console.log("Avatar src:", src);
   return (
     <div className="flex">
       <span>
