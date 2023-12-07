@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { axiosRes } from "../../api/axiosDefaults";
-import Form from 'react-bootstrap/Form'
+import Form from "react-bootstrap/Form";
 import { InputGroup } from "react-bootstrap";
+import Avatar from "../../components/Avatar";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function ReplyFrom(props) {
-    const { tweet, setTweet, setReplies, accountImage, account_id} = props
+  const { tweet, setTweet, setReplies, accountImage, account_id } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
@@ -16,32 +18,32 @@ function ReplyFrom(props) {
     event.preventDefault();
     try {
       const { data } = await axiosRes.post(`/replies/`, {
-        content, 
+        content,
         tweet,
       });
       setReplies((prevReplies) => ({
         ...prevReplies,
-        results: [data, ...prevReplies.results]
-      }))
+        results: [data, ...prevReplies.results],
+      }));
       setTweet((prevTweet) => ({
         results: [
-            {
-                ...prevTweet.results[0],
-                replies_count:prevTweet.results.comments + 1
-            }
-        ]
-      }))
-      setContent('')
+          {
+            ...prevTweet.results[0],
+            replies_count: prevTweet.results.comments + 1,
+          },
+        ],
+      }));
+      setContent("");
     } catch (err) {}
   };
 
   return (
     <div>
-      <Form className="mt-2">
+      <Form className="mt-2" onSubmit={handleSubmit}>
         <Form.Group>
           <InputGroup>
-            <Link to={`/accounts/${account_id_id}`}>
-              <Avatar src={accountImageImage} />
+            <Link to={`/accounts/${account_id}`}>
+              <Avatar src={accountImage} />
             </Link>
             <textarea
               className="w-full px-3 py-2 border rounded-md resize-none"

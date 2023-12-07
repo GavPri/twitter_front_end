@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Tweet from "./Tweet";
 import { axiosReq } from "../../api/axiosDefaults";
-import ReplyForm from "../replies/ReplyFrom";
+import ReplyForm from "../replies/ReplyForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Avatar from "../../components/Avatar";
