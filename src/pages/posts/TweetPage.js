@@ -33,9 +33,9 @@ const TweetPage = () => {
   }, [id]);
 
   return (
-    <div className="w-[100%] md:w-[50%] h-[full] mt-16 flex justify-center items-center">
+    <div className="w-[100%] md:w-[50%] h-[full] mt-16 flex justify-center items-center flex-col">
       <Tweet {...tweet.results[0]} setTweet={setTweet} tweetPage />
-      <div>
+      <div className="flex items-center justify-between w-full">
         {currentUser ? (
           <ReplyForm
             account_id={currentUser.account_id}

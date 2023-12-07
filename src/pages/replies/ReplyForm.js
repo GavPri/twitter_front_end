@@ -38,11 +38,14 @@ function ReplyFrom(props) {
   };
 
   return (
-    <div>
-      <Form className="mt-2" onSubmit={handleSubmit}>
-        <Form.Group>
-          <InputGroup>
-            <Link to={`/accounts/${account_id}`}>
+    <div className="mt-2 p-2 flex w-full">
+      <Form
+        className="w-full p-4 bg-tweet-container-background rounded-md"
+        onSubmit={handleSubmit}
+      >
+        <Form.Group className="mb-2">
+          <InputGroup className="flex basis-3/4">
+            <Link to={`/accounts/${account_id}`} className="mr-2">
               <Avatar src={accountImage} />
             </Link>
             <textarea
@@ -55,11 +58,11 @@ function ReplyFrom(props) {
           </InputGroup>
         </Form.Group>
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md ml-auto"
+          className="bg-link-color text-text-color px-4 py-2 rounded-md w-1/4"
           disabled={!content.trim()}
           type="submit"
         >
-          post
+          Reply
         </button>
       </Form>
     </div>
