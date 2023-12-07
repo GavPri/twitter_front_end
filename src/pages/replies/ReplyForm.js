@@ -38,7 +38,7 @@ function ReplyFrom(props) {
   };
 
   return (
-    <div className="mt-2 p-2 flex w-full">
+    <div className="mt-2 p-2 flex w-[320px] md:w-[640px]">
       <Form
         className="w-full p-4 bg-tweet-container-background rounded-md"
         onSubmit={handleSubmit}

@@ -10,10 +10,12 @@ const Reply = (props) => {
       <Link to={`/accounts/${account_id}`}>
         <Avatar src={accountImage} />
       </Link>
-      <div className="ml-4 items-start">
-        <p className="font-bold text-link-text">{owner.username}</p>
-        <span className="text-gray-500 text-sm">{updated_at}</span>
-        <p className="w-full">{content}</p>
+      <div className="ml-4 flex flex-col justify-start w-full items-start">
+        <div className="w-full flex justify-start items-start">
+          <p className="font-bold text-link-text">{owner.username}</p>
+          <span className="text-gray-500 text-sm">{updated_at}</span>
+        </div>
+        <p className="w-fit">{content}</p>
       </div>
     </div>
   );
