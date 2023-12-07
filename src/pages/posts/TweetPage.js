@@ -7,6 +7,7 @@ import ReplyForm from "../replies/ReplyForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Avatar from "../../components/Avatar";
+import Reply from "../replies/Reply";
 
 const TweetPage = () => {
   //  access url
@@ -50,9 +51,7 @@ const TweetPage = () => {
         ) : null}
         {replies.results.length ? (
           replies.results.map((reply) => (
-            <p key={reply.id}>
-              {reply.owner}:{reply.content}
-            </p>
+            <Reply key={reply.id} {...replies} />
           ))
         ) : currentUser ? (
           <p>No replies yet, be the first to reply</p>
