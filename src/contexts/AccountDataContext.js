@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState, useContext } from "react";
-import { axiosReq } from "../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useCurrentUser } from "./CurrentUserContext";
+import { click } from "@testing-library/user-event/dist/click";
 
 // ----- Create Context Objects
 const AccountDataContext = createContext();
@@ -19,6 +20,17 @@ export const AccountDataProvider = ({ children }) => {
   // const { popularAccounts } = accountData;
 
   const currentUser = useCurrentUser();
+
+  // --- handleFollow
+  const handleFollow = async (clickedAccount) => {
+    try {
+      const { data } = await axiosRes.post('/follower/', {
+        followed: clickedAccount.id
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   // request for profiles
   useEffect(() => {
@@ -41,7 +53,7 @@ export const AccountDataProvider = ({ children }) => {
 
   return (
     <AccountDataContext.Provider value={accountData}>
-      <SetAccountDataContext.Provider value={setAccountData}>
+      <SetAccountDataContext.Provider value={{setAccountData, handleFollow}}>
         {children}
       </SetAccountDataContext.Provider>
     </AccountDataContext.Provider>
