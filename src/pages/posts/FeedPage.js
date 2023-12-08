@@ -25,7 +25,7 @@ const FeedPage = ({ message, filter = "" }) => {
         setLoadingBarProgress(100);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     setHasLoaded(false);
@@ -91,7 +91,7 @@ const FeedPage = ({ message, filter = "" }) => {
             )}
           </>
         ) : (
-          console.log("loading")
+          <>Loading...</>
         )}
       </div>
     </div>

@@ -47,7 +47,7 @@ export const AccountDataProvider = ({ children }) => {
         },
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   // --- handle unfollow
@@ -69,7 +69,7 @@ export const AccountDataProvider = ({ children }) => {
         },
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   // request for profiles
@@ -84,7 +84,7 @@ export const AccountDataProvider = ({ children }) => {
           popularAccounts: data,
         }));
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

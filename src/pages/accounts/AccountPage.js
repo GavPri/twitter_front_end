@@ -42,7 +42,7 @@ const AccountPage = () => {
         setAccountTweets(accountTweets);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchData();

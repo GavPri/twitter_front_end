@@ -37,7 +37,7 @@ const Tweet = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   const handleUnLike = async () => {
@@ -56,7 +56,7 @@ const Tweet = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   //   Find out if current user owns the page
@@ -72,7 +72,7 @@ const Tweet = (props) => {
       await axiosRes.delete(`/tweets/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   return (

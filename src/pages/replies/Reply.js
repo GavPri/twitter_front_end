@@ -42,7 +42,6 @@ const Reply = (props) => {
     } catch (err) {}
   };
 
-  console.log(accountImage);
   return (
     <div className="flex text-text-color items-start w-[320px] p-4 rounded-md mb-2 md:w-[640px] bg-tweet-container-background">
       <Link to={`/accounts/${account_id}`}>

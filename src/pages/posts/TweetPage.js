@@ -28,7 +28,7 @@ const TweetPage = () => {
         setTweet({ results: [tweet] });
         setReplies(replies);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     handleMount();
