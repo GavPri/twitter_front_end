@@ -1,4 +1,6 @@
-# A simple Twitter Clone built with Django Rest Framework, React, and Tailwind CSS.
+# Twitter Clone
+
+A simple Twitter Clone built with Django Rest Framework, React, and Tailwind CSS, hosted on Heroku.
 
 ## Features
 
@@ -13,6 +15,34 @@
 - The ability to view posts by accounts you follow
 - The ability to like/unlike posts.
 - The ability to view all liked posts.
+
+### Features to add.
+
+- Edit profile.
+    - currently, users are unable to edit their current profile pictures or bio (content)
+
+---
+
+## User Stories.
+
+| as a | I want to | so that I can | components |
+| --- | --- | --- | --- |
+| user | sign up for an account | start sharing my thoughts and follow others | SignUpForm.js, PopularAccounts.js, AccountPage.js. |
+| user | navigate through all pages quickly | I can browse seamlessly without page refresh | NavBar.js, DropDownMenu.js. |
+| user |  post a comment under a tweet   | I can share my opinion under tweets | Replies.js, ReplyForm.js |
+| user | follow and unfollow users | and remove tweets from my feed. | Utils.js, PopularAccounts.js, AccountPage.js. |
+| user | edit and delete my replies | if I want to edit or remove replies, I can | EditDeleteDropDown.js, ReplyEditForm.js |
+|  registered user  | log in and out | I can access my account securely | NavBar.js, SignInForm.js |
+| user  | edit my tweet | I can correct any errors and change the content | EditTweetForm.js, TweetPage.js |
+| user   | View other users’ profiles | I can learn more about them | AccountPage.js |
+| user  | maintain my logged-in status until I choose to log out  | my user experience is not compromised | Navbar.js |
+| user   |  post tweets & images |  I can share content with everyone on the platform | TweetCreateFrom.js, Tweet.js, FeedPage.js |
+| user  |  I can like and unlike posts | I can view all my favorite posts | Tweet.js, FeedPage.js |
+| user  | I can view the most recent posts | I can be up to date-on posts | FeedPage.js |
+| user   | I can scroll indefinitely as posts are loaded | so that I do not have to click on 'next page' | FeedPage.js,  |
+| user  I can learn more about it | I can view individual posts | I can learn more about it | TweetPage.js |
+|  user  |  I can view a list of the most popular profiles | I can check out the popular profiles | FeedPage.js |
+| User | I can search for keywords | I can find posts that I'm interested in | FeedPage.js |
 
 ---
 
@@ -40,9 +70,21 @@ This Twitter clone leverages React Router to handle navigation and routing withi
 
 - The documentation for react-router can be found [here](https://reactrouter.com/en/main)
 
+### React Infinite Scroll Component
+
+The use of infinite scroll in this project was to allow users to view content without pagination. This makes the app more modern & engaging. 
+
+- The documentation for react-infinite-scroll-component can be found [here.](https://www.npmjs.com/package/react-infinite-scroll-component)
+
+### React Bootstrap.
+
+React Bootstrap was used in some sections of this project. Particularly relating to forms. 
+
+- The documentation for React Bootstrap can be found [here](https://react-bootstrap.netlify.app/)
+
 ---
 
-## React Components
+## Reusable React Components
 
 ### NavBar.js
 
@@ -70,53 +112,21 @@ This is an ideal component for this app but could be taken and used in any appli
 
 ## Manual Testing (Front-End)
 
-### Testing Registration & Authentication.
-
-To ensure the best user experience, I had to carry out tests on user registration and authentication. 
-
-### Registration (SignUpForm.js)
-
-The **first manual test** I carried out on the signup form was submitting the form with all fields empty. 
-
-![Screenshot 2023-12-04 at 01.37.17.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b47453e4-0839-4054-ae10-4c20943e9f08/b487273d-8816-43c7-ba31-57d97a81235b/Screenshot_2023-12-04_at_01.37.17.png)
-
-as seen above, this will not register an account. This test shows that all fields are required to be filled or they will return an error. 
-
 ---
 
-The **************second************** manual test I carried was entering a single letter for the name and a short yet matching password. 
+Manual testing showed that users can:
 
-Here are the errors: 
-
-![Screenshot 2023-12-04 at 01.59.11.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b47453e4-0839-4054-ae10-4c20943e9f08/0d33f998-8c92-4e63-bba4-7ce4b3d97e38/Screenshot_2023-12-04_at_01.59.11.png)
-
-This test shows: 
-
-- The password must be at least 8 characters in length.
-- Must not be **********too common**********
-- Can not contain only numerical values.
-
----
-
-### Authentication (SignInForm.js)
-
-The ********************first******************** manual test I carried out on the sign-in form was entering credentials that did not count. 
-
-Here is the result: 
-
-![Screenshot 2023-12-04 at 02.09.15.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b47453e4-0839-4054-ae10-4c20943e9f08/8d1204c8-3ce6-4b87-a49a-7ac6e852cabd/Screenshot_2023-12-04_at_02.09.15.png)
-
-This test result at least showed that entering in random user credentials will not log you into an account. 
-
----
-
-The **second manual test** that I carried out on the form, was submission without any credentials. Here are the results. 
-
-![Screenshot 2023-12-04 at 02.14.10.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b47453e4-0839-4054-ae10-4c20943e9f08/47949808-d203-4f76-b50d-5eb600ea8d79/Screenshot_2023-12-04_at_02.14.10.png)
-
----
-
-      This test showed that the form will not sign you in without submitting some credentials.  
+- create an account
+- login/logout
+- had a sustained login period
+- follow/unfollow users
+- like/unlike tweets
+- create tweets
+- edit/delete tweets
+- reply to tweets
+- edit/delete reply
+- filter liked posts
+- search for keywords/users
 
 ## Deployment (Heroku)
 
@@ -141,3 +151,9 @@ The Heroku app was connected to my GitHub repository, (found [here](https://gith
 - Scroll down the page to the deployment section and click ‘deploy branch’
 
 ![Screenshot 2023-12-04 at 01.26.00.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b47453e4-0839-4054-ae10-4c20943e9f08/01f26699-df28-43a5-aa5f-36698a13ef34/Screenshot_2023-12-04_at_01.26.00.png)
+
+---
+
+### Credits.
+
+The code in this project was created by closely following the course content of Code Institute. In particular, the moments repository, which can be found [here](https://github.com/mr-fibonacci/moments)
