@@ -15,7 +15,7 @@ function ReplyEditForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axiosRes.put(`/replies/${id}/`, {
+      await axiosRes.put(`/replies/${id}`, {
         content: formContent.trim(),
       });
       setReplies((prevReplies) => ({
