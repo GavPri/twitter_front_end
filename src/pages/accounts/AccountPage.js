@@ -19,7 +19,7 @@ const AccountPage = () => {
   const { id } = useParams();
 
   // account data
-  const setAccountData = useSetAccountData();
+  const { setAccountData, handleFollow } = useSetAccountData();
   const { pageAccount } = useAccountData();
   const [account] = pageAccount.results;
   // check if logged in user owns the profile
@@ -80,7 +80,12 @@ const AccountPage = () => {
                   Unfollow
                 </Button>
               ) : (
-                <Button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                <Button
+                  onClick={() => {
+                    handleFollow(account);
+                  }}
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                >
                   Follow
                 </Button>
               ))}

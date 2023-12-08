@@ -24,13 +24,13 @@ export const AccountDataProvider = ({ children }) => {
   // --- handleFollow
   const handleFollow = async (clickedAccount) => {
     try {
-      const { data } = await axiosRes.post('/follower/', {
-        followed: clickedAccount.id
-      })
+      const { data } = await axiosRes.post("/followers/", {
+        followed: clickedAccount.id,
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   // request for profiles
   useEffect(() => {
@@ -53,7 +53,7 @@ export const AccountDataProvider = ({ children }) => {
 
   return (
     <AccountDataContext.Provider value={accountData}>
-      <SetAccountDataContext.Provider value={{setAccountData, handleFollow}}>
+      <SetAccountDataContext.Provider value={{ setAccountData, handleFollow }}>
         {children}
       </SetAccountDataContext.Provider>
     </AccountDataContext.Provider>

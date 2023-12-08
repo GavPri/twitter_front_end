@@ -3,11 +3,12 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { Button } from "react-bootstrap";
 import Avatar from "../../components/Avatar";
+import { useSetAccountData } from "../../contexts/AccountDataContext";
 
 const Account = (props) => {
   const { account, isMobile, imageSize = 35 } = props;
   const { id, following_id, image, owner } = account;
-
+  const { handleFollow } = useSetAccountData();
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   return (
@@ -61,6 +62,9 @@ const Account = (props) => {
                 focus:outline-none
                 focus:ring-2
                 focus:ring-offset-2"
+                onClick={() => {
+                  handleFollow(account);
+                }}
               >
                 Follow
               </Button>
