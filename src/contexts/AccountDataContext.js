@@ -27,6 +27,24 @@ export const AccountDataProvider = ({ children }) => {
       const { data } = await axiosRes.post("/followers/", {
         followed: clickedAccount.id,
       });
+
+      setAccountData((prevState) => ({
+        ...prevState,
+        popularAccounts: {
+          ...prevState.popularAccounts,
+          results: prevState.popularAccounts.results.map((account) => {
+            return account.id === clickedAccount.id
+              ? {
+                  ...account,
+                  followers_count: account.followers_count + 1,
+                  following_id: data.id,
+                }
+              : account.is_owner
+              ? { ...account, following_count: account.following_count + 1 }
+              : account;
+          }),
+        },
+      }));
     } catch (err) {
       console.log(err);
     }

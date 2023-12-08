@@ -4,9 +4,6 @@ import Account from "./Account";
 import { useAccountData } from "../../contexts/AccountDataContext";
 
 const PopularProfiles = () => {
-  // --- current user
-
-  // const { popularAccounts } = accountData;
 
   // request for profiles
   const { popularAccounts } = useAccountData();
@@ -37,15 +34,16 @@ const PopularProfiles = () => {
         } md:mb-4 md:ml-2 m-2`}
       >
         {popularAccounts.results.slice(0, isMobile ? 5 : 8).map((account) => (
-          <Link
-            to={`/accounts/${account.id}`}
-            className={`flex ${
-              isMobile ? "flex-row" : null
-            } items-center md:mb-2`}
-            key={account.id}
-          >
+          <>
+            <Link
+              to={`/accounts/${account.id}`}
+              className={`flex ${
+                isMobile ? "flex-row" : null
+              } items-center md:mb-2`}
+              key={account.id}
+            ></Link>
             <Account key={account.id} account={account} isMobile={isMobile} />
-          </Link>
+          </>
         ))}
       </div>
     </div>

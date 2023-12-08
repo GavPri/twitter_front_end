@@ -15,7 +15,7 @@ const Account = (props) => {
     <div className="w-full">
       <div className={`my-3 flex items-center ${isMobile ? "flex-col" : ""}`}>
         <div>
-          <Link to={`/profiles/${id}`} className="self-center">
+          <Link to={`/accounts/${id}`} className="self-center">
             <Avatar src={image} height={imageSize} />
           </Link>
         </div>
