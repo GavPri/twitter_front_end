@@ -37,13 +37,13 @@ function ReplyEditForm(props) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="pr-1">
+    <Form onSubmit={handleSubmit} className="pr-1 w-full">
+      <Form.Group className=" flex flex-col items-start justify-between pr-1 w-full">
         <Form.Control
+          className="resize-none"
           as="textarea"
           value={formContent}
           onChange={handleChange}
-          rows={2}
         />
       </Form.Group>
       <div className="text-right">
