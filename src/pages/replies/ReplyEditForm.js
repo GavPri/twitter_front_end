@@ -46,11 +46,19 @@ function ReplyEditForm(props) {
           onChange={handleChange}
         />
       </Form.Group>
-      <div className="text-right">
-        <button onClick={() => setShowEditForm(false)} type="button">
+      <div className="text-right flex w-full  justify-between items-center">
+        <button
+          className="w-1/4 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-warning opacity-50 hover:opacity-100 hover:ease-in-out duration-200 hover:scale-125 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2"
+          onClick={() => setShowEditForm(false)}
+          type="button"
+        >
           cancel
         </button>
-        <button disabled={!content.trim()} type="submit">
+        <button
+          className="w-1/3 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color"
+          disabled={!content.trim()}
+          type="submit"
+        >
           save
         </button>
       </div>
