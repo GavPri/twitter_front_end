@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { Image } from "react-bootstrap";
 import Avatar from "../../components/Avatar";
@@ -6,6 +6,8 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { EditDeleteDropDown } from "../../components/MoreDropDown";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useState } from "react";
+import ReplyEditForm from "./ReplyEditForm";
+
 const Reply = (props) => {
   const currentUser = useCurrentUser();
   const {
@@ -16,7 +18,7 @@ const Reply = (props) => {
     content,
     id,
     setTweet,
-    setReply,
+    setReplies,
   } = props;
   const [showEditForm, setShowEditForm] = useState(false);
   const is_owner = currentUser?.username === owner;
@@ -33,9 +35,9 @@ const Reply = (props) => {
         ],
       }));
 
-      setReply((prevReply) => ({
-        ...prevReply,
-        results: prevReply.results.filter((reply) => reply.id !== id),
+      setReplies((prevReplies) => ({
+        ...prevReplies,
+        results: prevReplies.results.filter((reply) => reply.id !== id),
       }));
     } catch (err) {}
   };
@@ -50,10 +52,28 @@ const Reply = (props) => {
         <div className="w-full flex justify-start items-start">
           <p className="font-bold text-link-text">{owner.username}</p>
           <span className="text-gray-500 text-sm">{updated_at}</span>
+        </div>{" "}
+        <div className="bg-text-color text-tweet-container-background">
+          {showEditForm ? (
+            <ReplyEditForm
+              id={id}
+              account_id={account_id}
+              content={content}
+              accountImage={accountImage}
+              setReplies={setReplies}
+              setShowEditForm={setShowEditForm}
+            />
+          ) : (
+            <p>{content}</p>
+          )}
+          {is_owner && !showEditForm && (
+            <EditDeleteDropDown
+              handleEdit={() => setShowEditForm(true)}
+              handleDelete={handleDelete}
+            />
+          )}
         </div>
-        <p className="w-fit">{content}</p>
       </div>
-      <EditDeleteDropDown handleEdit={() => {}} handleDelete={handleDelete} />
     </div>
   );
 };

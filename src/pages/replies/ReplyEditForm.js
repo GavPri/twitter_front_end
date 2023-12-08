@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { axiosRes } from "../../api/axiosDefaults";
 
-
 function ReplyEditForm(props) {
   const { id, content, setShowEditForm, setReplies } = props;
 
@@ -19,7 +18,7 @@ function ReplyEditForm(props) {
       await axiosRes.put(`/replies/${id}/`, {
         content: formContent.trim(),
       });
-      setComments((prevReplies) => ({
+      setReplies((prevReplies) => ({
         ...prevReplies,
         results: prevReplies.results.map((reply) => {
           return reply.id === id
@@ -48,17 +47,10 @@ function ReplyEditForm(props) {
         />
       </Form.Group>
       <div className="text-right">
-        <button
-          onClick={() => setShowEditForm(false)}
-          type="button"
-        >
+        <button onClick={() => setShowEditForm(false)} type="button">
           cancel
         </button>
-        <button
-          className={styles.Button}
-          disabled={!content.trim()}
-          type="submit"
-        >
+        <button disabled={!content.trim()} type="submit">
           save
         </button>
       </div>
@@ -66,4 +58,4 @@ function ReplyEditForm(props) {
   );
 }
 
-export default CommentEditForm;
+export default ReplyEditForm;

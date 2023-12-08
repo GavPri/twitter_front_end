@@ -29,7 +29,7 @@ function ReplyFrom(props) {
         results: [
           {
             ...prevTweet.results[0],
-            replies_count: prevTweet.results.comments + 1,
+            replies_count: prevTweet.results[0].replies_count + 1,
           },
         ],
       }));
