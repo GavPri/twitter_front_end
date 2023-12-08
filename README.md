@@ -136,22 +136,14 @@ The Heroku app was connected to my GitHub repository, (found [here](https://gith
 
 ### In the settings tab…
 
-![Screenshot 2023-12-04 at 01.27.48.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b47453e4-0839-4054-ae10-4c20943e9f08/4c2bffab-e0bc-4052-a6a4-7c0d1b77dd07/Screenshot_2023-12-04_at_01.27.48.png)
-
 - Add any necessary configuration variables that are required for the project to function.
 
-![Screenshot 2023-12-04 at 01.29.13.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b47453e4-0839-4054-ae10-4c20943e9f08/b14f0deb-0ee9-43cf-843c-19ba7e515816/Screenshot_2023-12-04_at_01.29.13.png)
 
 ### In the deployment tab…
 
 - Connect your GitHub repository.
 
-![Screenshot 2023-12-04 at 01.22.55.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b47453e4-0839-4054-ae10-4c20943e9f08/23040873-10f7-4663-bd1b-7eac9ae601e3/Screenshot_2023-12-04_at_01.22.55.png)
-
 - Scroll down the page to the deployment section and click ‘deploy branch’
-
-![Screenshot 2023-12-04 at 01.26.00.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b47453e4-0839-4054-ae10-4c20943e9f08/01f26699-df28-43a5-aa5f-36698a13ef34/Screenshot_2023-12-04_at_01.26.00.png)
-
 ---
 
 ### Credits.
