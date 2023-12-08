@@ -7,7 +7,6 @@ import {
   useSetAccountData,
 } from "../../contexts/AccountDataContext";
 import { Button, Image } from "react-bootstrap";
-import PopularProfiles from "./PopularAccounts";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Tweet from "../posts/Tweet";
 import { fetchMoreData } from "../../utils/utils";

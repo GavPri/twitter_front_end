@@ -1,4 +1,3 @@
-import { Profiler } from "react";
 import { axiosReq } from "../api/axiosDefaults";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 

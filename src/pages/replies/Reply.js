@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { Image } from "react-bootstrap";
 import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { EditDeleteDropDown } from "../../components/MoreDropDown";

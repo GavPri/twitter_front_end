@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useCurrentUser } from "./CurrentUserContext";
-import { click } from "@testing-library/user-event/dist/click";
 import { unfollowHelper } from "../utils/utils";
 
 // ----- Create Context Objects

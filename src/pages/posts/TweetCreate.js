@@ -47,7 +47,7 @@ function TweetCreate() {
 
     try {
       const { data } = await axiosReq.post("/tweets/", formData);
-      history.push("/");
+      history.push(`/tweets/${data.id}`);
     } catch (err) {
       // console.log(err);
       if (err.response?.status !== 401) {
@@ -101,7 +101,7 @@ function TweetCreate() {
               <figure className="rounded-md w-full h-full">
                 <img
                   src={image}
-                  alt="upload image"
+                  alt="upload"
                   className=" object-cover mb-6"
                 />
                 <button
@@ -162,7 +162,6 @@ function TweetCreate() {
             Create
           </button>
         </div>
-        
       </form>
     </div>
   );
