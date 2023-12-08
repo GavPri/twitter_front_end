@@ -8,7 +8,7 @@ import { useSetAccountData } from "../../contexts/AccountDataContext";
 const Account = (props) => {
   const { account, isMobile, imageSize = 35 } = props;
   const { id, following_id, image, owner } = account;
-  const { handleFollow } = useSetAccountData();
+  const { handleFollow, handleUnfollow } = useSetAccountData();
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   return (
@@ -28,6 +28,9 @@ const Account = (props) => {
             !is_owner &&
             (following_id ? (
               <Button
+                onClick={() => {
+                  handleUnfollow(account);
+                }}
                 className="flex
                 justify-center
                 p-2
