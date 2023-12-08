@@ -53,7 +53,7 @@ const Reply = (props) => {
           <p className="font-bold text-link-text">{owner.username}</p>
           <span className="text-gray-500 text-sm">{updated_at}</span>
         </div>{" "}
-        <div className="bg-text-color text-tweet-container-background">
+        <div className="bg-text-color flex p-2 rounded-md justify-between items-start text-tweet-container-background w-full">
           {showEditForm ? (
             <ReplyEditForm
               id={id}
