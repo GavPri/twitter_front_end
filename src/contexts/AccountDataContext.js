@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useCurrentUser } from "./CurrentUserContext";
-import { unfollowHelper } from "../utils/utils";
+import { followHelper, unfollowHelper } from "../utils/utils";
 
 // ----- Create Context Objects
 const AccountDataContext = createContext();
@@ -31,31 +31,15 @@ export const AccountDataProvider = ({ children }) => {
       setAccountData((prevState) => ({
         ...prevState,
         pageAccount: {
-          results: prevState.pageAccount.results.map((account) => {
-            return account.id === clickedAccount.id
-              ? {
-                  ...account,
-                  followers_count: account.followers_count + 1,
-                  following_id: data.id,
-                }
-              : account.is_owner
-              ? { ...account, following_count: account.following_count + 1 }
-              : account;
-          }),
+          results: prevState.pageAccount.results.map((account) =>
+            followHelper(account, clickedAccount, data.id)
+          ),
         },
         popularAccounts: {
           ...prevState.popularAccounts,
-          results: prevState.popularAccounts.results.map((account) => {
-            return account.id === clickedAccount.id
-              ? {
-                  ...account,
-                  followers_count: account.followers_count + 1,
-                  following_id: data.id,
-                }
-              : account.is_owner
-              ? { ...account, following_count: account.following_count + 1 }
-              : account;
-          }),
+          results: prevState.popularAccounts.results.map((account) =>
+            followHelper(account, clickedAccount, data.id)
+          ),
         },
       }));
     } catch (err) {
