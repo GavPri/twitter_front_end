@@ -16,6 +16,22 @@ export const fetchMoreData = async (resource, setResource) => {
   } catch (err) {}
 };
 
+// follow helper
+export const followHelper = (account, clickedAccount, following_id) => {
+  {
+    return account.id === clickedAccount.id
+      ? {
+          ...account,
+          followers_count: account.followers_count + 1,
+          following_id,
+        }
+      : account.is_owner
+      ? { ...account, following_count: account.following_count + 1 }
+      : account;
+  }
+};
+
+// unfollow helper
 export const unfollowHelper = (account, clickedAccount) => {
   return account.id === clickedAccount.id
     ? {
