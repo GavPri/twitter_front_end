@@ -69,7 +69,7 @@ export const AccountDataProvider = ({ children }) => {
       setAccountData((prevState) => ({
         ...prevState,
         pageAccount: {
-          results: prevState.popularAccounts.results.map((account) =>
+          results: prevState.pageAccount.results.map((account) =>
             unfollowHelper(account, clickedAccount)
           ),
         },
