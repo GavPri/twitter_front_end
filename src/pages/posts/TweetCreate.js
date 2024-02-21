@@ -99,18 +99,9 @@ function TweetCreate() {
           {image ? (
             <>
               <figure className="rounded-md w-full h-full">
-                <img
-                  src={image}
-                  alt="upload"
-                  className=" object-cover mb-6"
-                />
-                <button
-                  onClick={handleChangeImage}
-                  className=" bottom-0 left-0 w-full mb-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  focus:outline-none focus:ring-2 focus:ring-offset-2"
-                >
-                  Change Photo
-                </button>
+                <img src={image} alt="upload" className=" object-cover mb-6" />
               </figure>
+              <p></p>
             </>
           ) : (
             <>
