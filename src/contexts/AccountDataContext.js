@@ -30,6 +30,19 @@ export const AccountDataProvider = ({ children }) => {
 
       setAccountData((prevState) => ({
         ...prevState,
+        pageAccount: {
+          results: prevState.pageAccount.results.map((account) => {
+            return account.id === clickedAccount.id
+              ? {
+                  ...account,
+                  followers_count: account.followers_count + 1,
+                  following_id: data.id,
+                }
+              : account.is_owner
+              ? { ...account, following_count: account.following_count + 1 }
+              : account;
+          }),
+        },
         popularAccounts: {
           ...prevState.popularAccounts,
           results: prevState.popularAccounts.results.map((account) => {
