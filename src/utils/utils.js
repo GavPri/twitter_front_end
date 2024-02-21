@@ -37,7 +37,7 @@ export const unfollowHelper = (account, clickedAccount) => {
     ? {
         ...account,
         followers_count: account.followers_count - 1,
-        followers_id: null,
+        following_id: null,
       }
     : account.is_owner
     ? {
