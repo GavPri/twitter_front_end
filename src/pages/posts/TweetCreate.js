@@ -7,8 +7,8 @@ function TweetCreate() {
   // ---- toast state
   const [showToast, setShowToast] = useState(false);
 
-  // ---- toggle toast function 
-  const toggleToast = () => setShowToast(!showToast)
+  // ---- toggle toast function
+  const toggleToast = () => setShowToast(!showToast);
   // ---- store errors
   const [errors, setErrors] = useState({});
 
@@ -100,13 +100,30 @@ function TweetCreate() {
         >
           Upload Photo
         </p>
-        <div className="rounded overflow-hidden h-50 w-50 flex items-start">
+        <div className="rounded overflow-hidden h-50 w-50">
           {image ? (
             <>
               <figure className="rounded-md w-full h-full">
                 <img src={image} alt="upload" className=" object-cover mb-6" />
               </figure>
-              
+              {/* ---- toast button */}
+              <button
+                onClick={toggleToast}
+                type="button"
+                className="bg-link-color text-text-color px-4 py-2 rounded-md mb-2 mr-auto"
+              >
+                Change image?
+              </button>
+              <Toast
+                show={showToast}
+                onClose={toggleToast}
+                animation={true}
+                className="text-text-color bg-link-color rounded-md"
+              >
+                <Toast.Body>
+                  To change your image, click choose file and select a new one!
+                </Toast.Body>
+              </Toast>
             </>
           ) : (
             <>
