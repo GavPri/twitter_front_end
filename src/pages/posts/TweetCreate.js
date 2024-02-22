@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { Form } from "react-bootstrap";
+import { Form, Toast } from "react-bootstrap";
 
 function TweetCreate() {
+  // ---- toast state
+  const [showToast, setShowToast] = useState(false);
+  
   // ---- store errors
   const [errors, setErrors] = useState({});
 
@@ -101,7 +104,7 @@ function TweetCreate() {
               <figure className="rounded-md w-full h-full">
                 <img src={image} alt="upload" className=" object-cover mb-6" />
               </figure>
-              <p></p>
+              
             </>
           ) : (
             <>
