@@ -6,7 +6,9 @@ import { Form, Toast } from "react-bootstrap";
 function TweetCreate() {
   // ---- toast state
   const [showToast, setShowToast] = useState(false);
-  
+
+  // ---- toggle toast function 
+  const toggleToast = () => setShowToast(!showToast)
   // ---- store errors
   const [errors, setErrors] = useState({});
 
