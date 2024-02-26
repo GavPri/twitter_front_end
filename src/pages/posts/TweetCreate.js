@@ -3,6 +3,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Form, Toast, Button } from "react-bootstrap";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+import ChangeImageToast from "./ChangeImageToast";
 
 function TweetCreate() {
   // ---- toast state
@@ -108,24 +109,10 @@ function TweetCreate() {
                 <img src={image} alt="upload" className=" object-cover mb-6" />
               </figure>
               {/* ---- toast button */}
-              <Button
-                onClick={toggleToast}
-                type="button"
-                className="flex justify-between items-center border-none bg-transparent shadow-none p-0 mb-2"
-              >
-                Change image?
-                <AiOutlineInfoCircle className="ml-2" />
-              </Button>
-              <Toast
-                show={showToast}
-                onClose={toggleToast}
-                animation={true}
-                className="text-text-color bg-transparent rounded-md max-h-16 mb-2 "
-              >
-                <Toast.Body className="px-0">
-                  To change your image, click choose file and select a new one!
-                </Toast.Body>
-              </Toast>
+              <ChangeImageToast
+                showToast={showToast}
+                toggleToast={toggleToast}
+              />
             </>
           ) : (
             <>
