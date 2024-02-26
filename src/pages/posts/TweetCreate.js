@@ -4,13 +4,11 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Form, Toast, Button } from "react-bootstrap";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import ChangeImageToast from "./ChangeImageToast";
+import { useToast } from "./toastUtility/ToastUtils";
 
 function TweetCreate() {
   // ---- toast state
-  const [showToast, setShowToast] = useState(false);
-
-  // ---- toggle toast function
-  const toggleToast = () => setShowToast(!showToast);
+  const { showToast, toggleToast } = useToast();
   // ---- store errors
   const [errors, setErrors] = useState({});
 

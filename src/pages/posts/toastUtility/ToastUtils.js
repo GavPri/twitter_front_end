@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const ToastUtils = () => {
+export const useToast = () => {
   // ---- toast state
   const [showToast, setShowToast] = useState(false);
 
