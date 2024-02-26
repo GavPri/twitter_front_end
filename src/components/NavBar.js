@@ -87,7 +87,7 @@ const NavBar = () => {
     setMobileMenu(!mobileMenu);
   };
   return (
-    <header className="fixed top-0 left-0 w-full h-16 flex p-4 items-center text-text-color bg-nav-background z-10">
+    <header className="fixed top-0 left-0 w-full h-16 flex p-4 items-center text-text-color bg-nav-background z-10 ">
       <nav className="w-full flex items-center justify-between">
         <NavLink to="/">
           {" "}

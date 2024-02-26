@@ -5,6 +5,9 @@ import {
   AiOutlineHeart,
   AiOutlineRead,
   AiOutlineLogout,
+  AiOutlineLogin,
+  AiOutlineProfile,
+  AiOutlineHome,
 } from "react-icons/ai";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
@@ -53,17 +56,18 @@ const MobileMenu = ({ handleMenu, mobileMenu, handleSignOut }) => {
     <>
       <NavLink exact to="/" activeClassName="text-accent-color">
         <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-start items-center">
+          <AiOutlineHome size={15} />
           <div className="ml-2">Home</div>
         </li>
       </NavLink>
       <NavLink to="/signup" activeClassName="text-accent-color">
         <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-start items-center">
-          <AiOutlineRead size={15} /> <div className="ml-2">Sign Up</div>
+          <AiOutlineProfile size={15} /> <div className="ml-2">Sign Up</div>
         </li>
       </NavLink>
       <NavLink to="/signin">
         <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-start items-center">
-          <AiOutlineLogout size={15} /> <div className="ml-2">Sign In</div>
+          <AiOutlineLogin size={15} /> <div className="ml-2">Sign In</div>
         </li>
       </NavLink>
     </>
