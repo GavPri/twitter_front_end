@@ -116,34 +116,158 @@ This is an ideal component for this app but could be taken and used in any appli
 
 Manual testing showed that users can:
 
-# Create an account.
+### Create an account.
 The tests ran for registering an account showed:
     - A user with a unique username and password could create an account as long as it meets the password criteria. 
 
     - The username must be unique. If a user tries to create an account using the name 'Tom', and creates a password that matches the criteria, they will recieve a notfication saying 'A user with that username already exists.'
 
     - The passwords must match.
+        - If a user has a unique user name but the passwords do not match, they will recieve an error message "The passwords do not match"
 
-- Login/logout
-- had a sustained login period
-- follow/unfollow users
-- like/unlike tweets
-- create tweets
-- edit/delete tweets
-- reply to tweets
-- edit/delete reply
-- filter liked posts
-- search for keywords/users
+    - The password criteria.
+        - If a password is entirely numerical, they will recieve a notfication of this error. 
+        - If the password lenght is less than 8, they will be notified of this. 
+        - If the password is too common they will be notified of this.
+
+
+### Login/logout
+
+    - Once a user has created an account, they are redirected to the sign in form. 
+
+    - Successful login. 
+        - If a user correctly adds their username and password they are directed to the feed page.
+
+    - Wrong username/ username does not exist.
+        - Error message displayed 'Unable to log in with provided credentials.'
+    
+    - Empty Fields.
+        - Leaving the username field blank with a password input creates a notfication "Must include "username" and "password"."
+
+        - Empty password fields results in this error message "This field may not be blank" appearing below the password field.
+
+### Had a sustained login period
+    - If a user logins in and returns to the site after 5 minutes, they will still be logged in. If the user is inactive after 24 hours, they will be logged out. This is the intended functionality.
+
+### Follow/unfollow users
+    - Users can follow other users by clicking the folow button on the popular profile component. Users can also follow other users by visiting their profile and clicking the follow button. 
+    
+    Following a user:
+        Popular Accounts: 
+            - Clicking on the follow button will dynamically update the button on the popular profiles to change to "Unfollow"
+            - Visiting the clicked profile shows: An unfollow button is present. Their followers count has increased by one. 
+            - Visiting the logged in profile shows their following count has increased by one. 
+
+        Visiting Account: 
+            - When visiting another users profile ( which they are not already following ) the "Follow" button is present. Clicking on the button results in the "Unfollow" button appearing. 
+            - Their followers count will also increase by one.
+            - Revisiting the logged in users account will show that their following count has increased by one.
+        
+    Unollowing a user:
+        Popular Accounts: 
+            - Clicking on the unfollow button will dynamically update the button on the popular profiles to change to "Follow"
+            - Visiting the clicked profile shows: An follow button is present showing that they have unfollowed the user. Their followers count has decreased by one. 
+            - Visiting the logged in profile shows their following count has decreased by one. 
+
+        Visiting Account: 
+            - When visiting another users profile ( which they are already following ) the "Unfollow" button is present. Clicking on the button results in the "Follow" button appearing. 
+            - Their followers count will also decrease by one.
+            - Revisiting the logged in users account will show that their following count has decreased by one.
+
+### Like/Unlike tweets
+
+    - Liking Posts
+        - Users can like tweets of other users. These tweets are then displayed the the liked page. 
+    
+        - Liking a tweet will also increase the like count by one
+
+        - Visitors to the site can not like tweets if they are not logged in to an account. When hovering over the like button, a message appears stating that they must log in to like a tweet. 
+
+        - Users can not like their own tweets.When hovering over the like button, a message appears stating that they can not like their own tweets.
+
+    - Unliking Posts 
+        - Users can also unlike tweets. When a tweet is liked, the like button is colored, clicking on this will result in only the outline of like button. Unliking a tweet will remove the tweet from the liked tab. 
+
+        - Unliking the tweet will decrease the like count by one. 
+
+### Create tweets
+    
+    - Creating a tweet can be accomplished with the tweet create form. 
+
+    - The text field must be filled. If it empty, the message "This field may not be blank" will appear. 
+
+    - Image field may be blank, this is not required in the model. 
+
+    - A visitor which is not logged in can not create a tweet. 
+
+### Edit/delete tweets
+    
+    - Only the user who owns the account which created the tweet can edit it. 
+
+    - If you visit a tweet which does not belong to you or you are a logged out user, there will be no option to edit it.
+
+    - When you own the tweet, a dropdown menu will be available which allows you to edit the tweet. 
+
+    - If the tweet did not contain an image intially, it can be added in this form. 
+
+    - The image can be changed by selecting a new file. 
+
+    - The text of the tweet can also be updated. 
+
+    - Only the owner of the tweet can delete it. 
+
+    - Deleting a tweet will remove it from the users profile. 
+
+### Reply to tweets
+
+    - Only users who are logged in to an account can reply to posts. 
+
+    - The reply can only be edited by the owner of the reply. 
+
+    - The reply must not be blank. 
+
+### Edit/delete reply
+    - Edit
+        - The reply can only be edited by the owner of the reply. If you view a reply which was not posted by your account, or you are logged out, you will not be able to edit the reply.
+
+        - If you are the owner of the account and you are logged in, the reply can be edited. 
+
+    - Delete
+        - The reply can only be deleted by the owner of the reply. If you view a reply which was not posted by your account, or you are logged out, you will not be able to delete the reply.
+
+        - If you are the owner of the account and you are logged in, the reply can be deleted. 
+
+### Filter liked posts
+    - Liking a post on the home page, then visiting the liked tweet page will show that the liked post will be present in your liked posts.
+
+    - Unliking the posts you have previously liked will remove them from your liked posts. This shows that the filter is working.
+
+### Search for keywords/users
+    - Enter a character or word in the search tab, it will return all posts that contain that character or that word. 
 
 ## Deployment (Heroku)
 
 This application is hosted on Heroku.
+
+To allow the development of the site, the deployment had to be co-ordinated with the REST API. Through development, I set the client orgin dev key to the current site that was created through gitpod. 
+
+The site has access to the API as the config vars include an Allowed Host which is set the deployed sites url. This is key as without this, the site would not have access to the API data. 
+
+Other configuartion variables are set in the heroku setting which allow image hosting and setting the database url. 
 
 The Heroku app was connected to my GitHub repository, (found [here](https://github.com/GavPri/twitter_front_end/tree/main)). 
 
 ### In the settings tab…
 
 - Add any necessary configuration variables that are required for the project to function.
+    - Allowed host 
+    - Client orgin 
+    - Client orgin dev
+    - Cloudinary url
+    - database url
+    - disable collect static. 
+    - secret key.
+
 
 
 ### In the deployment tab…
@@ -152,6 +276,40 @@ The Heroku app was connected to my GitHub repository, (found [here](https://gith
 
 - Scroll down the page to the deployment section and click ‘deploy branch’
 ---
+
+### Cloning the Repository
+
+If you haven't already, you can clone the repository using the following steps:
+
+1. Open a terminal or command prompt.
+2. Navigate to the directory where you want to clone the project.
+3. Run the following command:
+
+   ```bash
+   git clone https://github.com/GavPri/twitter_front_end
+   ```
+
+4. Change into the project directory:
+
+   ```bash
+   cd twitter_front_end
+   ```
+
+## Forking the Repository
+
+If you'd like to contribute to this project, it's recommended to fork the repository. Follow these steps:
+
+1. On the top right of the GitHub page, click the "Fork" button.
+2. This will create a copy of the repository in your GitHub account.
+3. Clone your fork to your local machine using the instructions mentioned in the "Cloning the Repository" section.
+4. Create a new branch for your changes:
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+5. Make your changes and push them to your forked repository.
+6. Open a pull request to merge your changes into the original repository.
 
 ### Credits.
 
