@@ -117,7 +117,7 @@ function TweetEdit() {
         >
           Upload Photo
         </p>
-        <div className="rounded overflow-hidden h-50 w-50 flex items-start">
+        <div className="rounded overflow-hidden h-50 w-50 flex flex-col items-start">
           {image ? (
             <>
               <figure className="rounded-md w-full h-full">
