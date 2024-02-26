@@ -116,8 +116,15 @@ This is an ideal component for this app but could be taken and used in any appli
 
 Manual testing showed that users can:
 
-- create an account
-- login/logout
+# Create an account.
+The tests ran for registering an account showed:
+    - A user with a unique username and password could create an account as long as it meets the password criteria. 
+
+    - The username must be unique. If a user tries to create an account using the name 'Tom', and creates a password that matches the criteria, they will recieve a notfication saying 'A user with that username already exists.'
+
+    - The passwords must match.
+
+- Login/logout
 - had a sustained login period
 - follow/unfollow users
 - like/unlike tweets

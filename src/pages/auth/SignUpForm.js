@@ -26,6 +26,14 @@ const SignUpForm = () => {
   //  Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (password1 !== password2) {
+      setErrors({
+        ...errors,
+        password2: ["The passwords do not match"],
+      });
+      return;
+    }
     try {
       await axios.post("/dj-rest-auth/registration", signUpData);
       history.push("/signin");
@@ -61,8 +69,11 @@ const SignUpForm = () => {
               className="w-full border border-tweet-border-color px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-accent-color-300 focus:ring
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
-            {errors.username?.map((message, id) => (
-              <div className="w-full h-8 flex justify-center items-center text-rose mb-4 border border-warning px-3 py-2 rounded rounded-md">
+            {errors.username?.map((message, idx) => (
+              <div
+                key={idx}
+                className="w-full h-8 flex justify-center items-center text-rose mb-4 border border-warning px-3 py-2 rounded rounded-md"
+              >
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
             ))}
@@ -80,8 +91,11 @@ const SignUpForm = () => {
               className="w-full border border-tweet-border-color px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-accent-color-300 focus:ring
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
-            {errors.password1?.map((message, id) => (
-              <div className="w-full h-8 flex justify-center items-center text-rose mb-4 border border-warning px-3 py-2 rounded rounded-md">
+            {errors.password1?.map((message, idx) => (
+              <div
+                key={idx}
+                className="w-full h-8 flex justify-center items-center text-rose mb-4 border border-warning px-3 py-2 rounded rounded-md"
+              >
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
             ))}
@@ -99,8 +113,11 @@ const SignUpForm = () => {
               className="w-full border border-tweet-border-color px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-accent-color-300 focus:ring
             focus:ring-accent-color-300 mb-6 text-background-color"
             />
-            {errors.password2?.map((message, id) => (
-              <div className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md">
+            {errors.password2?.map((message, idx) => (
+              <div
+                key={idx}
+                className="w-full h-8 flex justify-center items-center text-rose mb-1 border border-warning px-3 py-2 rounded rounded-md"
+              >
                 <p className="text-md font-bold text-warning">{message}</p>
               </div>
             ))}
