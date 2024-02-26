@@ -3,8 +3,12 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Form } from "react-bootstrap";
 import { useParams } from "react-router";
+import { useToast } from "./toastUtility/ToastUtils";
+import ChangeImageToast from "./ChangeImageToast";
 
 function TweetEdit() {
+  // ---- handle toast state
+  const { showToast, toggleToast } = useToast();
   // ---- store errors
   const [errors, setErrors] = useState({});
 
@@ -64,7 +68,7 @@ function TweetEdit() {
     }
 
     try {
-      await axiosReq.put(`/tweets/${id}`, formData);
+      await axiosReq.put(`/tweets/${id}/`, formData);
       history.push(`/tweets/${id}`);
     } catch (err) {
       // console.log(err);
@@ -118,13 +122,11 @@ function TweetEdit() {
             <>
               <figure className="rounded-md w-full h-full">
                 <img src={image} alt="upload" className=" object-cover mb-6" />
-                <button
-                  onClick={handleChangeImage}
-                  className=" bottom-0 left-0 w-full mb-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color  focus:outline-none focus:ring-2 focus:ring-offset-2"
-                >
-                  Change Photo
-                </button>
               </figure>
+              <ChangeImageToast
+                showToast={showToast}
+                toggleToast={toggleToast}
+              />
             </>
           ) : (
             <>
