@@ -55,7 +55,7 @@ function ReplyFrom(props) {
           </InputGroup>
         </Form.Group>
         <button
-          className="bg-link-color text-text-color px-4 py-2 rounded-md w-1/5"
+          className="bg-link-color text-text-color px-4 py-2 rounded-md w-2/5 md:w-1/5"
           disabled={!content.trim()}
           type="submit"
         >

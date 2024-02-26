@@ -55,7 +55,7 @@ function ReplyEditForm(props) {
           cancel
         </button>
         <button
-          className="w-1/3 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color"
+          className="w-2/5 md:w-1/5 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-text-color bg-link-color"
           disabled={!content.trim()}
           type="submit"
         >
