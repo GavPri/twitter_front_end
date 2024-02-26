@@ -120,9 +120,9 @@ function TweetCreate() {
                 show={showToast}
                 onClose={toggleToast}
                 animation={true}
-                className="text-text-color bg-link-color rounded-md max-h-16 mb-2"
+                className="text-text-color bg-transparent rounded-md max-h-16 mb-2 "
               >
-                <Toast.Body>
+                <Toast.Body className="px-0">
                   To change your image, click choose file and select a new one!
                 </Toast.Body>
               </Toast>
