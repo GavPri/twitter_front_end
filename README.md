@@ -247,6 +247,23 @@ The tests ran for registering an account showed: - A user with a unique username
 
 ### Edit/delete tweets
 
+    To test that I can edit tweets I :
+        - created a tweet with only text content 
+        - visited that tweet page. 
+        - clicked on drop down menu
+        - click 'edit' 
+        - updated the text and added an image.
+        - shared the tweet again. 
+        - viewed the updated tweet.
+        - visit the tweet again.
+        - click on dropdown
+        - click 'edit' 
+        - changed the previously updated image
+    
+    To that that only owners can edit the tweet I: 
+        - Visited a different user tweet.
+        - No dropdown appeared with option to edit. 
+
     - Only the user who owns the account which created the tweet can edit it.
 
     - If you visit a tweet which does not belong to you or you are a logged out user, there will be no option to edit it.
@@ -295,17 +312,32 @@ The tests ran for registering an account showed: - A user with a unique username
 
 ## Deployment (Heroku)
 
-This application is hosted on Heroku.
+This application is hosted on Heroku. Here are the steps to creating an app on heroku. 
+    1. Login to your heroku account. Sign up for one of you don't have one. 
+
+    2. Select 'New App' option on the dashboard. 
+
+    3. Select your region and app name. 
+
+    4. Add configuration variables if required. In this deployed ap, there is none as the api is set to take requests from the front end in a seperate heroku app. 
+
+    5. Navigate to the deploy tab. 
+
+    6. Connect to the relevent Github repository. 
+
+    7. Select the branch which you'd like to deploy. 
+
+    8. Scroll down and select the 'Deploy' button
 
 To allow the development of the site, the deployment had to be co-ordinated with the REST API. Through development, I set the client orgin dev key to the current site that was created through gitpod.
 
-The site has access to the API as the config vars include an Allowed Host which is set the deployed sites url. This is key as without this, the site would not have access to the API data.
+The site has access to the API as the config vars of the API include an Allowed Host which is set the deployed sites url. This is key as without this, the site would not have access to the API data.
 
-Other configuartion variables are set in the heroku setting which allow image hosting and setting the database url.
+Other configuartion variables are set in the heroku setting of the API which allow image hosting and setting the database url.
 
 The Heroku app was connected to my GitHub repository, (found [here](https://github.com/GavPri/twitter_front_end/tree/main)).
 
-### In the settings tab…
+### In the settings tab… (API)
 
 - Add any necessary configuration variables that are required for the project to function.
   - Allowed host
@@ -315,14 +347,6 @@ The Heroku app was connected to my GitHub repository, (found [here](https://gith
   - database url
   - disable collect static.
   - secret key.
-
-### In the deployment tab…
-
-- Connect your GitHub repository.
-
-- Scroll down the page to the deployment section and click ‘deploy branch’
-
----
 
 ### Cloning the Repository
 
