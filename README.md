@@ -119,7 +119,7 @@ The design process of NotTwitter was modeled after the design of twitter and som
 The home page, feed page and liked posts page were all modeled after the home page of twitter. With tweets centered in a vertical column, with some content aside (popular profiles). The search bar is also present above the tweets, making searching for content incredibly simple.
 
 The the basis for design of the home page was this hand drawing I made after reviewing twitters feed.
-![home page design](./src/images/home-page-design.jpg)
+![home page design](/home-page-design.jpeg)
 
 ### Profile Page
 
@@ -128,14 +128,14 @@ The profile page took inspiration from instagrams profile page. Meaning it shoul
 The content of that users profile ( i.e the tweets ) took inspiration from twitters user profile deisgn.A vertical coloum of tweets displayed one on top of the other. (As oppose to instagrams grid display)
 
 This is the hand-drawing I made of the profile design.
-![user profile design](./src/images/user-profile-design.jpg)
+![user profile design](/user-profile-design.jpeg)
 
 ### Tweet Page
 
 The design of the tweet display took inspiration from both twiiter and instagrams post display. The users post, like counts and comment count followed by the comments benneath the post.
 
 The is the hand drawn design I made for the Tweet page.
-![user profile design](./src/images/tweet-page-design.jpg)
+![user profile design](./src/images/user-profile-design.jpeg)
 
 ### Colour Theme
 
