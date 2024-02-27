@@ -26,6 +26,12 @@ const MobileMenu = ({ handleMenu, mobileMenu, handleSignOut }) => {
   );
   const loggedInLinks = (
     <>
+      <NavLink exact to="/" activeClassName="text-accent-color">
+        <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex mb-6 justify-start items-center">
+          <AiOutlineHome size={15} />
+          <div className="ml-2">Home</div>
+        </li>
+      </NavLink>
       <NavLink to="/liked" activeClassName="text-accent-color">
         <li className="px-4 hover:text-link-color hover:cursor-pointer w-[100%] flex  mb-6 justify-start items-center">
           <AiOutlineHeart size={15} /> <div className="ml-2">Liked</div>
